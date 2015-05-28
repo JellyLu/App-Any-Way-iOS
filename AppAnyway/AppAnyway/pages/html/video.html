@@ -1,0 +1,134 @@
+<div id="page_video"  class="AWPage"> 
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>视频&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>		
+			<h3>类名：AWVideo</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;录制视频、选择视频。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>chooseVideo</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;从相册中选择视频。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) chooseVideo:( NSDictionary *param )<br/>Android：<br/>public AWResult chooseVideo (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回视频在设备中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0005、0407、1302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWVideo", "chooseVideo", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .choose").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .chooseVideo").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					    <b>测试:</b>
+						<button class="btn chooseVideo">选择视频</button>
+						<span class="content">选择视频：
+						     <video class="choose" width="100" height="100" controls="controls"></video>
+						     <span class="softVersion chooseVideo"></span>
+						</span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>takeVideo</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;使用相机录制视频。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) takeVideo:( NSDictionary *param )<br/>Android：<br/>public AWResult takeVideo (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回视频在设备中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有1301、0407、1302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWVideo", "takeVideo", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .take").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .takeVideo").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					    <b>测试:</b>
+						<button class="btn takeVideo">录制视频</button>
+						<span class="content">录制视频：
+						    <video class="take" width="100" height="100" controls="controls"></video>
+						    <span class="takeVideo"></span>
+						</span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>videoControl</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;弹出可以选择视频、摄像、取消的ActionSheet。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) videoControl:( NSDictionary *param )<br/>Android：<br/>public AWResult videoControl (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回视频在设备中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0005、0407、1302、1301</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWVideo", "videoControl", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .control").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_video .content .videoControl").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn videoControl">视频控制</button>
+						<span class="content">视频控制：
+						    <video class="control" width="100" height="100" controls="controls"></video>
+						    <span class="videoControl"></span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+ <script>
+    var page_video = AW.createPageObj("video",{
+        init: function() {
+            $('.chooseVideo').bind('click', AW_video.chooseVideo);
+            $('.takeVideo').bind('click', AW_video.takeVideo);
+            $('.videoControl').bind('click', AW_video.videoControl);
+            $('.pageback').bind('click', AW_video.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+
+        chooseVideo: function() {
+            AW.invoke("AWVideo", "chooseVideo", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_video .content .choose").attr('src', data.result);
+                } else {
+                    $("#page_video .content .chooseVideo").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        takeVideo: function() {
+            AW.invoke("AWVideo", "takeVideo", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_video .content .take").attr('src', data.result);
+                } else {
+                    $("#page_video .content .takeVideo").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        videoControl: function() {
+            AW.invoke("AWVideo", "videoControl", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_video .content .control").attr('src', data.result);
+                } else {
+                    $("#page_video .content .videoControl").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_video.addEvent('pageinit', AW_video.init)
+    page_video.addEvent('pagebeforeshow', AW_video.beforeshow)
+    page_video.addEvent('pageshow', AW_video.show);
+</script>
+</div>
+
+

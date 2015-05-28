@@ -1,0 +1,145 @@
+<div id="page_manage"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>页面管理&nbsp;&nbsp;&nbsp;&nbsp;</div>		
+	<div class='main_li'>
+            <h3>类名：AWMangePages</h3>
+            <b>概述:</b>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;保存、删除、读取页面缓存文件，iOS所有文件放在沙盒中Library/Caches/“executebaleName”/ 下，Android所有文件放在沙盒中data/data/packageName(应用包名)/files/pages下 </p>
+            <b>方法:</b>
+            <ul class='fnli'>
+               <li><h4 class='evefnh'>savePage</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;页面内容保存到指定id页面文件中。 </p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void)savePage:( NSDictionary *param )<br/>Android：<br/>public AWResult savePage (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>pageContent：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：需要保存的数据<br/>pageId：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：页面Id</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否保存成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003、0602、0603</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWManagePages", "savePage", {<br/>&nbsp;&nbsp;"pageId": "test",<br/>&nbsp;&nbsp;"pageContent": "save page test"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .savePage").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .savePage").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .savePage").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                       <b>可用性:</b>
+                        <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                        <b>测试：</b>
+                         <button class="btn savePage">保存页面</button>
+						 <span class="content">保存页面：<span class="savePage"></span></span>
+                    </div>
+                </li>
+                <li><h4 class='evefnh'>loadPage</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;根据页面Id，返回UTF8编码的页面内容。 </p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) loadPage:( NSDictionary *param )<br/>Android：<br/> public AWResult loadPage (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>pageId：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：页面id</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件内容，UTF8编码<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003、0604</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWManagePages", "loadPage",<br/>{<br/>&nbsp;&nbsp;"pageId": "test"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .loadPage").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .loadPage").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                       	<b>可用性:</b>
+                		<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                        <b>测试：</b>
+						<button class="btn loadPage">读取页面</button>
+						<span class="content">读取页面：<span class="loadPage"></span></span>             
+                    </div>
+                </li>
+                 <li><h4 class='evefnh'>clearPages</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;删除所有页面缓存文件。</p>
+                        <b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) clearPages:( NSDictionary *param )<br/>Android：<br/>public AWResult clearPages(String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述: 是否成功删除文件<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0601</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWManagePages", "clearPages", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .clearPages").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .clearPages").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_manage .content .clearPages").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                        <b>可用性:</b>
+                        <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                        <b>测试：</b>
+                        <button class="btn clearPages">删除页面缓存</button>
+						<span class="content">删除页面缓存：<span class="clearPages"></span></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+ 
+ <script>
+    var page_manage = AW.createPageObj("manage",{
+        init: function() {
+            //alert("one-init");
+            $('.savePage').bind('click', AW_manage.savePage);
+            $('.loadPage').bind('click', AW_manage.loadPage);
+            $('.clearPages').bind('click', AW_manage.clearPages);
+            $('.pageback').bind('click', AW_manage.pageback);
+        },
+        beforeshow: function() {
+            //alert("one-before");
+        },
+        show: function() {
+            //alert("one-show");
+        },
+
+        pageback: function() {
+            AW.pageBack();
+        },
+
+        clearPages: function() {
+            AW.invoke("AWManagePages", "clearPages", {},
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_manage .content .clearPages").html('成功');
+                    } else {
+                        $("#page_manage .content .clearPages").html('失败');
+                    }
+                } else {
+                    $("#page_manage .content .clearPages").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        loadPage: function() {
+            AW.invoke("AWManagePages", "loadPage", {
+                "pageId": "test"
+            },
+            function(data) {
+                if (data.success) {
+
+                    $("#page_manage .content .loadPage").html(data.result);
+
+                } else {
+                    $("#page_manage .content .loadPage").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+        },
+
+        savePage: function() {
+            AW.invoke("AWManagePages", "savePage", {
+                "pageId": "test",
+                "pageContent": "save page test"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_manage .content .savePage").html('成功');
+                    } else {
+                        $("#page_manage .content .savePage").html('失败');
+                    }
+                } else {
+                    $("#page_manage .content .savePage").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+        }
+    });
+
+    page_manage.addEvent('pageinit', AW_manage.init)
+   	page_manage.addEvent('pagebeforeshow', AW_manage.beforeshow)
+    page_manage.addEvent('pageshow', AW_manage.show);
+</script>
+</div>

@@ -1,0 +1,35 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>黄伟&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<div class='evevipl'>
+				<br/>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;<img src='image/vip3.jpg'/>喜欢篮球、音乐、长笛，喜欢新技术，研究新技术，个性稳重的大男孩。</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;中间件Android客户端设计、实现、测试。</p>
+			<b>博客地址：</b><p><a href='http://www.cnblogs.com/ACMxike20111726'>http://www.cnblogs.com/ACMxike20111726</a></p>
+			<p><b>邮箱：</b>1039407128@qq.com</p>
+			<b>技能：</b>
+			<p>&nbsp;&nbsp;熟悉并掌握java，在项目中熟练使用；熟练使用JavaScript、jQuery、angular等语言及框架。</p>
+			<b>座右铭：</b><p>&nbsp;&nbsp;&nbsp;&nbsp;黎明能给你只是一道曙光，路，还得自己走！</p>
+		</div>
+	</div>
+	<script>
+		var page_vip3 = AW.createPageObj("vip3", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip3.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip3.addEvent('pageinit', AW_vip3.init);
+		page_vip3.addEvent('pagebeforeshow', AW_vip3.beforeshow);
+		page_vip3.addEvent('pageshow', AW_vip3.show);	
+  	</script>
+</div>

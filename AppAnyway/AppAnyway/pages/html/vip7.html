@@ -1,0 +1,37 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>李振&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<img src='image/vip7.jpg' />
+			<div class='evevipl'>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;2012级本科生，目前是大三老学长一枚！掌握Web前端知识，并正在自主学习后台知识。有相同兴趣的同学可以联系我哦！</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;web页面编写、测试。</p>
+			<b>博客地址：</b><p><a href='http://www.cnblogs.com/swust-li/'>http://www.cnblogs.com/swust-li/</a></p>
+			<p><b>邮箱：</b>821452228@qq.com </p>
+			<b>技能：</b>
+			<p>&nbsp;&nbsp;web前端知识、熟悉php。</p>
+			<p><b>特长：</b>唱歌、打麻将 </p>
+			<b>座右铭：</b><p>Study hard，more practice！</p>
+			<b>所获荣誉：</b><p>优秀班干部、暑期实践项目三等奖</p>
+		</div>
+	</div>
+	<script>
+		var page_vip7 = AW.createPageObj("vip7", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip7.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip7.addEvent('pageinit', AW_vip7.init);
+		page_vip7.addEvent('pagebeforeshow', AW_vip7.beforeshow);
+		page_vip7.addEvent('pageshow', AW_vip7.show);	
+  	</script>
+</div>

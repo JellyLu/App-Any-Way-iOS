@@ -1,0 +1,145 @@
+<div id="page_appInfo" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+		<div class='sontopld'><a class='backf pageback'><</a>APP信息&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWAppInfo</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;获取APP相关信息，包名、版本号、更新软件、退出软件。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>getPackageName</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取包名。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getPackageName:( NSDictionary *param )<br/>Android：<br/>public AWResult getPackageName(String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：APP包名，如com.app.anyway<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0202<br/></p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWAppInfo", "getPackageName", {},<br />function(data) { <br />&nbsp;&nbsp;if (data.success) {<br />&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .packageName").html(data.result);<br/>&nbsp;&nbsp;} else {<br />&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .packageName").html(data.error.code + ":" + data.error.desc);<br />&nbsp;&nbsp;}<br />});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn packageName"> 获取包名</button>
+						<span class="content">包名：<span class="packageName"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>getSoftVersion</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取APP版本号。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getSoftVersion:( NSDictionary *param )<br/>Android：<br/>public AWResult getSoftVersion(String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：APP版本号,如v1.0.0<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0203</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWAppInfo", "getSoftVersion", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .softVersion").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .softVersion").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn softVersion">获取版本号</button>
+						<span class="content">版本号：<span class="softVersion"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>updateSoft</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;更新软件。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) updateSoft:( NSDictionary *param )<br/>Android：<br/>public AWResult updateSoft(String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>url：<br>&nbsp;&nbsp;类型：字符串<br>&nbsp;&nbsp;描述：更新软件的地址<br>&nbsp;&nbsp;注：并不检测是否更新，所以更新地址必须为可下载的APK文件。</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br>&nbsp;&nbsp;类型：字符串<br>&nbsp;&nbsp;描述：是否成功跳转到App Store更新软件。<br>error：<br>&nbsp;&nbsp;类型：字符串 <br>&nbsp;&nbsp;可能错误代码有：0003、0201</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWAppInfo", "updateSoft", {"url":"http://www.appanyway.com/awdownload/demo/1.0/AnyWay.apk"},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .updateSoft").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content .updateSoft").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：由于App Store审核不希望App内有更新软件的提示，所以iOS删除该功能。</p><p>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn updateSoft">更新软件</button>
+						<span class="content">更新软件：<span class="updateSoft">由于App Store审核不希望App内有更新软件的提示，所以iOS删除该功能，不提供测试</span></span>
+					</div>
+				</li>	
+				<li><h4 class='evefnh'>exitSoft</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;退出软件。</p>
+						<b>方法定义：</b>
+						<code><pre>Android：<br/>public AWResult exitSoft (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br>&nbsp;&nbsp;类型：bool<br>&nbsp;&nbsp;描述：是否成功退出软件。<br>error：<br>&nbsp;&nbsp;类型：字符串 <br>&nbsp;&nbsp;可能错误代码有：0003、0201</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWAppInfo", "exitSoft", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content . exifSoft ").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_appInfo .content . exifSoft ").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 不支持<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn exitSoft">退出软件</button>
+						<span class="content">退出软件：<span class="exitSoft">iOS不支持</span></span>
+					</div>
+				</li>	
+			</ul>
+		</div>
+
+    <script type="text/javascript">
+        var page_appInfo = AW.createPageObj("appInfo",{
+	            init: function() {
+	                $('.packageName').bind('click', AW_appInfo.getPackageName);
+	                $('.softVersion').bind('click', AW_appInfo.getSoftVersion);
+                  //$('.updateSoft').bind('click', AW_appInfo.updateSoft);
+	              //  $('.exifSoft').bind('click', AW_appInfo.exifSoft);
+                    $('.pageback').bind('click', AW_appInfo.pageback);
+                  //  $('.exitSoft').bind('click', AW_appInfo.exitSoft);
+	            },
+	            beforeshow: function() {},
+	            show: function() {},
+	            getPackageName: function() {
+	                AW.invoke("AWAppInfo", "getPackageName", {},
+	                function(data) {
+	                    if (data.success) {
+	                        $("#page_appInfo .content .packageName").html(data.result);
+	                    } else {
+	                        $("#page_appInfo .content .packageName").html(data.error.code + ":" + data.error.desc);
+	                    }
+	                });
+	            },
+	            getSoftVersion: function() {
+	                AW.invoke("AWAppInfo", "getSoftVersion", {},
+	                function(data) {
+	                    if (data.success) {
+	                        $("#page_appInfo .content .softVersion").html(data.result);
+	                    } else {
+	                        $("#page_appInfo .content .softVersion").html(data.error.code + ":" + data.error.desc);
+	                    }
+	                });
+	            },
+	            updateSoft: function() {
+	                AW.invoke("AWAppInfo", "updateSoft", {"url":baseUrl + "/anywayWeb/awdownload/demo/1.0/AnyWay.apk"},
+	                function(data) {
+	                    if (data.success) {
+	                        $("#page_appInfo .content .updateSoft").html(data.result);
+	                    } else {
+	                        $("#page_appInfo .content .updateSoft").html(data.error.code + ":" + data.error.desc);
+	                    }
+	                });
+	            },
+	            exitSoft: function() {
+	                AW.invoke("AWAppInfo", "exitSoft", {},
+	                function(data) {});
+	            },
+
+	            pageback: function() { 
+	                AW.pageBack();
+	            }
+	        });
+
+        page_appInfo.addEvent('pageinit', AW_appInfo.init);
+        page_appInfo.addEvent('pagebeforeshow', AW_appInfo.beforeshow);
+        page_appInfo.addEvent('pageshow', AW_appInfo.show);
+    </script>
+</div>

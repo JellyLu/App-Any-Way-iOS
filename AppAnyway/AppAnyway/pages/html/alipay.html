@@ -1,0 +1,68 @@
+<div id="page_alipay" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+    <div class='sontopld'><a class='backf pageback'><</a>支付宝&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class='main_li'>
+        <h3>类名：AWAlipay</h3>
+        <b>概述:</b>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;支付宝快捷支付。</p>
+        <b>方法:</b>
+        <ul class='fnli'>
+            <li><h4 class='evefnh'>payOrder</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;支付宝快捷支付。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) payOrder:( NSDictionary *param )<br/>Android：<br/>public AWResult payOrder (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+					<p>tradeNO：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：订单编号<br/>notifyURL：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：回调URL<br/>productName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：商品名称<br/>price：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：价格<br/>productDescription：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：商品描述</p>
+                    <b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：付款成功结果<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1401、1402、1403、1404、1405、0001、0003</p>
+                    <b>例子：</b>
+                    <code><pre>var param = {<br/>&nbsp;&nbsp;"tradeNO": "201504190001",<br/>&nbsp;&nbsp;"notifyURL": "http://www.appaynway.com/anywayWeb/mobi_cbasync.action",<br/>&nbsp;&nbsp;"productName": "chanel",<br/>&nbsp;&nbsp;"price": "0.01",<br/>&nbsp;&nbsp;"productDescription": "coco chanel"<br/>};<br/>AW.invoke("AWAlipay", "payOrder", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_alipay .content .payOrder").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_alipay .content .payOrder").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                    <b>测试:</b>
+                    <button class="btn payOrder">支付宝付款</button>
+                    <span class="content">付款：<span class="payOrder">由于账号原因，暂不提供本功能测试</span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+  <script>
+    var page_alipay = AW.createPageObj("alipay",{
+        init: function() {
+           // $('.payOrder').bind('click', AW_alipay.payOrder);
+            $('.pageback').bind('click', AW_alipay.pageback);
+        },
+        beforeshow: function() {},
+        show: function() {},
+        pageback: function() {
+            AW.pageBack();
+        },
+
+        payOrder: function() {
+            var param = {
+                "tradeNO": "201504190001",
+                "notifyURL": "",
+                "productName": "chanel",
+                "price": "0.01",
+                "productDescription": "coco chanel"
+            };
+
+            AW.invoke("AWAlipay", "payOrder", param,
+            function(data) {
+                if (data.success) {
+                    $("#page_alipay .content .payOrder").html(data.result);
+                } else {
+                    $("#page_alipay .content .payOrder").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_alipay.addEvent('pageinit', AW_alipay.init);
+    page_alipay.addEvent('pagebeforeshow', AW_alipay.beforeshow);
+    page_alipay.addEvent('pageshow', AW_alipay.show);
+</script>
+</div>

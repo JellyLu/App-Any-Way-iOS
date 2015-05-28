@@ -1,0 +1,132 @@
+<div id="page_photo" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+		<div class='sontopld'><a class='backf pageback'><</a>照片&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWPhoto</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;拍照、选择照片。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>choosePhoto</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;从相册中选择照片。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) choosePhoto:( NSDictionary *param )<br/>Android：<br/>public AWResult choosePhoto (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>allowsEditing:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：图片是否裁剪<br/>width:<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大宽度<br/>height：<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大高度</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回图片在TMP中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0005、0407、1302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWPhoto", "choosePhoto", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .choose").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .choosePhoto").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>备注:</b>
+						<p>注： sdk编译版本需Android  4.4以上</p>
+						<b>测试:</b>
+						<button class="btn choosPhoto">选择照片</button>
+						<span class="content">选照片：<img class="choose"/><span class="choosePhoto"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>photoControl</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;弹出可以选择照片、拍照、取消的ActionSheet。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) photoControl:( NSDictionary *param )<br/>Android：<br/>public AWResult photoControl (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>allowsEditing:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：图片是否裁剪<br/>width:<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大宽度<br/>height：<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大高度</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回图片在TMP中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0005、1301、0407、1302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWPhoto", "photoControl", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .control").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .photoControl").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						 <button class="btn photoControl">照片控制</button>
+						<span class="content">照片控制：<img class="control"/><span class="photoControl"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>takePhoto</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;使用相机拍照。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) takePhoto:( NSDictionary *param )<br/>Android：<br/>public AWResult takePhoto (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>allowsEditing:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：图片是否裁剪<br/>width:<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大宽度<br/>height：<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：图片最大高度</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：返回图片在TMP中的URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1301、0407、1302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWPhoto", "takePhoto", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .take").attr('src', data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_photo .content .takePhoto").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn takePhoto">拍照</button>
+						<span class="content">拍照：<img class="take"/><span class="takePhoto"></span></span>
+					</div>
+				</li>	
+			</ul>
+		</div>
+ 
+  <script>
+    var page_photo = AW.createPageObj("photo", {
+	    param:{
+	        "allowsEditing": true,
+	        "width": "200",
+	        "height": "300"
+	    },
+        init: function() {
+            $('.choosPhoto').bind('click', AW_photo.choosPhoto);
+            $('.photoControl').bind('click', AW_photo.photoControl);
+            $('.takePhoto').bind('click', AW_photo.takePhoto);
+            $('.pageback').bind('click', AW_photo.pageback);
+
+        },
+        beforeshow: function() {},
+        show: function() {},
+        pageback: function() {
+            AW.pageBack();
+        },
+        choosPhoto: function() {
+        	var me = AW_photo;
+            AW.invoke("AWPhoto", "choosePhoto", me.param,
+            function(data) {
+                if (data.success) {
+                    $("#page_photo .content .choose").attr('src', data.result);
+                    $("#page_photo .content .choosePhoto").html('');
+                } else {
+                    $("#page_photo .content .choosePhoto").html(data.error.code + ":" + data.error.desc);
+                    $("#page_photo .content .choose").attr('src', '');
+                }
+            });
+        },
+        photoControl: function() {
+        	var me = AW_photo;
+            AW.invoke("AWPhoto", "photoControl", AW_photo.param,
+            function(data) {
+                if (data.success) {
+                    $("#page_photo .content .control").attr('src', data.result);
+                } else {
+                    $("#page_photo .content .photoControl").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        takePhoto: function() {
+        	var me = AW_photo;
+            AW.invoke("AWPhoto", "takePhoto", me.param,
+            function(data) {
+                if (data.success) {
+                    $("#page_photo .content .take").attr('src', data.result);
+                } else {
+                    $("#page_photo .content .takePhoto").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_photo.addEvent('pageinit', AW_photo.init)
+    page_photo.addEvent('pagebeforeshow', AW_photo.beforeshow)
+    page_photo.addEvent('pageshow', AW_photo.show);
+</script>
+</div>

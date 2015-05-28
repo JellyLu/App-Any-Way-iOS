@@ -1,0 +1,393 @@
+body{
+	 margin: 0;
+	padding: 0;
+}
+
+.aw-content{
+	position:absolute;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+
+.aw{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	position:absolute;
+	-webkit-overflow-scrolling : touch; 
+}
+
+.awpage{
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	overflow-y: auto;
+}
+
+#awpage0{
+	left:0%;
+}
+
+#awpage1{
+	left:100%;
+}
+
+
+
+/************AWToast*****************/
+.AWToast{
+	width: 100%;
+	position:fixed;
+	bottom:150px;
+}
+
+.AWToast .AWMsg{
+	width:150px;
+	margin:auto;
+	text-align:center;
+	padding:10px 8px;
+	border-radius:3px;
+	font-family: "Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	display:block;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+
+/********color theme***********/
+.default{
+	background-color: #222;
+    border-color: #222;
+    color: #eee;
+}
+
+.primary{
+	background-color: #1b9af7;
+	border-color: #1b9af7;
+	color: #fff;
+}
+
+.caution{
+	 background-color: #ff4351;
+	 border-color: #ff4351;
+	 color: #fff;
+}
+
+.highlight{
+	 background-color: #feae1b;
+     border-color: #feae1b;
+     color: #fff;
+}
+
+
+/**
+**glow animation
+** 光晕
+**/
+.glow-default{
+	-webkit-animation:glowing-default 3s linear .1s infinite normal;
+	animation:glowing-default 3s linear .1s infinite normal;
+}
+
+.glow-primary{
+	-webkit-animation:glowing-primary 3s linear .1s infinite normal;
+	animation:glowing-primary 3s linear .1s infinite normal;
+}
+
+.glow-caution{
+	-webkit-animation:glowing-caution 3s linear .1s infinite normal;
+	animation:glowing-caution 3s linear .1s infinite normal;
+}
+
+.glow-highlight{
+	-webkit-animation:glowing-highlight 3s linear .1s infinite normal;
+	animation:glowing-highlight 3s linear .1s infinite normal;
+}
+
+/******glowing keyFrame*******/
+/**
+**Glow animation
+**/
+@-webkit-keyframes glowing-default{
+	from{
+		-webkit-box-shadow:0 0 0 rgba(21, 36, 0, 0.3);
+		box-shadow:0 0 0 rgba(21, 36, 0, 0.3);
+	}
+	50%{
+		-webkit-box-shadow:0 0 30px rgba(21, 36, 0, 0.8);
+		box-shadow:0 0 30px rgba(21, 36, 0, 0.8);
+	}
+	to{
+		-webkit-box-shadow:0 0 0 rgba(21, 36, 0, 0.3);
+		box-shadow:0 0 0 rgba(21, 36, 0, 0.3);
+	}
+}
+@keyframes glowing-default {
+	  from {
+	    -webkit-box-shadow: 0 0 0 rgba(21, 36, 0, 0.3);
+	            box-shadow: 0 0 0 rgba(21, 36, 0, 0.3);
+	       }
+	  50% {
+	    -webkit-box-shadow: 0 0 20px rgba(21, 36, 0, 0.8);
+	            box-shadow: 0 0 20px rgba(21, 36, 0, 0.8); 
+	      }
+	  to {
+	    -webkit-box-shadow: 0 0 0 rgba(21, 36, 0, 0.3);
+	            box-shadow: 0 0 0 rgba(21, 36, 0, 0.3); 
+	     } 
+}
+ 
+@-webkit-keyframes glowing-primary{
+	from{
+		-webkit-box-shadow:0 0 0 rgba(0, 191, 255, 0.3);
+		box-shadow:0 0 0 rgba(0, 191, 255, 0.3);
+	}
+	50%{
+		-webkit-box-shadow:0 0 30px rgba(0, 191, 255, 0.8);
+		box-shadow:0 0 30px rgba(0, 191, 255, 0.8);
+	}
+	to{
+		-webkit-box-shadow:0 0 0 rgba(0,191,255, 0.3);
+		box-shadow:0 0 0 rgba(0, 191, 255, 0.3);
+	}
+}
+@keyframes glowing-primary {
+	  from {
+	    -webkit-box-shadow: 0 0 0 rgba(0, 191, 255, 0.3);
+	            box-shadow: 0 0 0 rgba(0, 191, 255, 0.3);
+	       }
+	  50% {
+	    -webkit-box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+	            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8); 
+	      }
+	  to {
+	    -webkit-box-shadow: 0 0 0 rgba(0, 191, 255, 0.3);
+	            box-shadow: 0 0 0 rgba(0, 191, 255, 0.3); 
+	     } 
+ }
+  
+@-webkit-keyframes glowing-caution{
+	from{
+		-webkit-box-shadow:0 0 0 rgba(44, 154, 219, 0.3);
+		box-shadow:0 0 0 rgba(44, 154, 219, 0.3);
+	}
+	50%{
+		-webkit-box-shadow:0 0 30px rgba(44, 154, 219, 0.8);
+		box-shadow:0 0 30px rgba(44, 154, 219, 0.8);
+	}
+	to{
+		-webkit-box-shadow:0 0 0 rgba(44, 154, 219, 0.3);
+		box-shadow:0 0 0 rgba(44, 154, 219, 0.3);
+	}
+}
+@keyframes glowing-caution {
+	  from {
+	    -webkit-box-shadow: 0 0 0 rgba(255, 92, 103, 0.3);
+	            box-shadow: 0 0 0 rgba(255, 92, 103, 0.3);
+	       }
+	  50% {
+	    -webkit-box-shadow: 0 0 20px rgba(255, 92, 103, 0.8);
+	            box-shadow: 0 0 20px rgba(255, 92, 103, 0.8); 
+	      }
+	  to {
+	    -webkit-box-shadow: 0 0 0 rgba(255, 92, 103, 0.3);
+	            box-shadow: 0 0 0 rgba(255, 92, 103, 0.3); 
+	     } 
+ }
+  
+@-webkit-keyframes glowing-highlight{
+	from{
+		-webkit-box-shadow:0 0 0 rgba(254, 174, 27, 0.3);
+		box-shadow:0 0 0 rgba(254, 174, 27, 0.3);
+	}
+	50%{
+		-webkit-box-shadow:0 0 30px rgba(254, 174, 27, 0.8);
+		box-shadow:0 0 30px rgba(254, 174, 27, 0.8);
+	}
+	to{
+		-webkit-box-shadow:0 0 0 rgba(254, 174, 27, 0.3);
+		box-shadow:0 0 0 rgba(254, 174, 27, 0.3);
+	}
+}
+@keyframes glowing-highlight {
+	  from {
+	    -webkit-box-shadow: 0 0 0 rgba(254, 174, 27, 0.3);
+	            box-shadow: 0 0 0 rgba(254, 174, 27, 0.3);
+	       }
+	  50% {
+	    -webkit-box-shadow: 0 0 20px rgba(254, 174, 27, 0.8);
+	            box-shadow: 0 0 20px rgba(254, 174, 27, 0.8); 
+	      }
+	  to {
+	    -webkit-box-shadow: 0 0 0 rgba(254, 174, 27, 0.3);
+	            box-shadow: 0 0 0 rgba(254, 174, 27, 0.3); 
+	     } 
+ }
+
+
+
+
+/* animation sets */
+/* move from / to  */
+.aw-moveToLeft {
+	-webkit-animation: moveToLeft .2s ease both;
+	-moz-animation: moveToLeft .2s ease both;
+	animation: moveToLeft .2s ease both;
+}
+
+.aw-moveFromLeft {
+	-webkit-animation: moveFromLeft .2s ease both;
+	-moz-animation: moveFromLeft .2s ease both;
+	animation: moveFromLeft .2s ease both;
+}
+
+.aw-moveToRight {
+	-webkit-animation: moveToRight .2s ease both;
+	-moz-animation: moveToRight .2s ease both;
+	animation: moveToRight .2s ease both;
+}
+
+.aw-moveFromRight {
+	-webkit-animation: moveFromRight .2s ease both;
+	-moz-animation: moveFromRight .2s ease both;
+	animation: moveFromRight .2s ease both;
+}
+
+
+/* move from / to and fade */
+.aw-moveToLeftFade {
+	-webkit-animation: moveToLeftFade .2s ease both;
+	-moz-animation: moveToLeftFade .2s ease both;
+	animation: moveToLeftFade .2s ease both;
+}
+
+.aw-moveFromLeftFade {
+	-webkit-animation: moveFromLeftFade .2s ease both;
+	-moz-animation: moveFromLeftFade .2s ease both;
+	animation: moveFromLeftFade .2s ease both;
+}
+
+.aw-moveToRightFade {
+	-webkit-animation: moveToRightFade .2s ease both;
+	-moz-animation: moveToRightFade .2s ease both;
+	animation: moveToRightFade .2s ease both;
+}
+
+.aw-moveFromRightFade {
+	-webkit-animation: moveFromRightFade .2s ease both;
+	-moz-animation: moveFromRightFade .2s ease both;
+	animation: moveFromRightFade .2s ease both;
+}
+
+/*************** keyframes *****************/
+@-webkit-keyframes moveToLeft {
+	from { left:0;}
+	to { left:-100%; }
+}
+@-moz-keyframes moveToLeft {
+	from { left:0;}
+	to { left:-100%; }
+}
+@keyframes moveToLeft {
+	from { left:0;}
+	to { left:-100%; }
+}
+
+@-webkit-keyframes moveFromLeft {
+	from { left:-100%; }
+	to {  left:0; }
+}
+@-moz-keyframes moveFromLeft {
+	from { left:-100%; }
+	to {  left:0; }
+}
+@keyframes moveFromLeft {
+	from { left:-100%; }
+	to {  left:0; }
+}
+
+@-webkit-keyframes moveToRight {
+	from { left:0; }
+	to { left:100%; }
+}
+@-moz-keyframes moveToRight {
+	from { left:0; }
+	to { left:100%; }
+}
+@keyframes moveToRight {
+	from { left:0; }
+	to { left:100%; }
+}
+
+@-webkit-keyframes moveFromRight {
+	from {  left:100%; }
+	to {  left:0; }
+}
+@-moz-keyframes moveFromRight {
+	from {  left:100%; }
+	to {  left:0; }
+}
+@keyframes moveFromRight {
+	from {  left:100%; }
+	to {  left:0; }
+}
+
+
+
+@-webkit-keyframes moveToLeftFade {
+	from { opacity: 1.0; left: 0;}
+	to { opacity: 0; left: -100%; }
+}
+@-moz-keyframes moveToLeftFade {
+	from { opacity: 1.0; left: 0;}
+	to { opacity: 0; left: -100%; }
+}
+@keyframes moveToLeftFade {
+	from { opacity: 1.0; left: 0;}
+	to { opacity: 0; left: -100%; }
+}
+
+@-webkit-keyframes moveFromLeftFade {
+	from { opacity: 0.3; left: -100%; }
+	to{opacity: 1.0; left: 0; }
+}
+@-moz-keyframes moveFromLeftFade {
+	from { opacity: 0.3; left: -100%; }
+	to{opacity: 1.0; left: 0; }
+}
+@keyframes moveFromLeftFade {
+	from { opacity: 0.3; left: -100%; }
+	to{opacity: 1.0; left: 0; }
+}
+
+@-webkit-keyframes moveToRightFade {
+	from {opacity: 1; left: 0;}
+	to { opacity: 0.3; left: 100%; }
+}
+@-moz-keyframes moveToRightFade {
+	from {opacity: 1; left: 0;}
+	to { opacity: 0.3; left: 100%; }
+}
+@keyframes moveToRightFade {
+	from {opacity: 1; left: 0;}
+	to { opacity: 0.3; left: 100%; }
+}
+
+@-webkit-keyframes moveFromRightFade {
+	from { opacity: 0; left: 100%; }
+	to { opacity: 1.0; left: 0; }
+}
+@-moz-keyframes moveFromRightFade {
+	from { opacity: 0; left: 100%; }
+	to { opacity: 1.0; left: 0; }
+}
+@keyframes moveFromRightFade {
+	from { opacity: 0; left: 100%; }
+	to { opacity: 1.0; left: 0; }
+}

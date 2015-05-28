@@ -1,0 +1,36 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>江杨慧敏&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<div class='evevipl'>
+				<br/>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;<img  src='image/vip8.jpg' />我是个比较沉静、内向的女生。爱古风，爱唱歌，爱写东西，爱古典乐器，喜欢自由，不喜欢有什么人或什么事约束自己。当然现在最大的爱好就是研究js,html/css等前端知识了。在实验室中的这段时间，也参与了一些项目，例如酒店wify、车展等页面框架的搭建，APP开发等。</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;web页面编写、测试。</p>
+			<p><b>邮箱：</b>2324214160@qq.com</p>
+			<b>技能：</b>
+			<p>JavaScript、HTML/css、jQuery、java、C语言、数据库。</p>
+			<p><b>特长：</b>JavaScript、HTML/css、jQuery </p>
+			<b>座右铭：</b><p>&nbsp;&nbsp;&nbsp;&nbsp;当你感到悲哀痛苦时，最好是去学些什么东西。学习会使你永远立于不败之地。</p>
+			<b>所获荣誉：</b><p>&nbsp;&nbsp;&nbsp;&nbsp;院三好、院优秀学生干部、院学习成绩优秀奖、校征文比赛一等奖、校优秀团员等。</p>
+		</div>
+	</div>
+	<script>
+		var page_vip8 = AW.createPageObj("vip8", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip8.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip8.addEvent('pageinit', AW_vip8.init);
+		page_vip8.addEvent('pagebeforeshow', AW_vip8.beforeshow);
+		page_vip8.addEvent('pageshow', AW_vip8.show);	
+  	</script>
+</div>

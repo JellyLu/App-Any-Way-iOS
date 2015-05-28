@@ -1,0 +1,236 @@
+<div id="page_localResource"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>常用功能&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWLocalResource</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;系统的一些本地功能，如拨打电话、判断设备是否越狱、判断设备是否安装某个APP、通过浏览器打开一个链接、通过包名打开一个APP。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>call</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;拨打电话。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) call:( NSDictionary *param )<br/>Android：<br/>public AWResult call (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>number：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：电话号码</p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否成功调用拨号功能<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003、0501</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocalResource", "call", {<br/>&nbsp;&nbsp;"number": "15881616204"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .call").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .call").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .call").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn call">拨打电话</button>
+						<span class="info">拨打电话：<span class="call"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>isInstall</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;通过包名判断是否安装了APP。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void)isInstall:( NSDictionary *param )<br/>Android：<br/>public AWResult isInstall (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>packageName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：包名</p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否已安装<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocalResource", "isInstall", {<br/>&nbsp;&nbsp;"packageName": "com.mall1390.swedding"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isInstall").html('已安装');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isInstall").html('未安装');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isInstall").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn isInstall">是否安装＊＊app</button>
+						<span class="info">是否安装＊＊app：<span class="isInstall"></span></span>
+					</div>
+				</li>	
+				<li><h4 class='evefnh'>isJailBreak</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;通过设备是否越狱（或root）。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void)isJailBreak:( NSDictionary *param )<br/>Android：<br/>public AWResult isInstall (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否越狱<br/>error：无</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocalResource", "isJailBreak", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test1.txt"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isJailBreak").html('已越狱（或root）');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isJailBreak").html('未越狱（或root）');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .isJailBreak").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn isJailBreak">设备是否越狱</button>
+						<span class="info">是否越狱：<span class="isJailBreak"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>openURL</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;通过浏览器打开一个链接。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void)openURL:( NSDictionary *param )<br/>Android：<br/>public AWResult openURL (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>url：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：链接</p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否成功调用浏览器打开链接<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocalResource", "openURL", {<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .openURL").html('打开网页');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .openURL").html('未打开网页');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .openURL").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre>
+						</code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn openURL">用浏览器打开网页</button>
+						<span class="info">用浏览器打开链接：<span class="openURL"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>startSoft</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;通过包名打开一个APP。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void)startSoft:( NSDictionary *param )<br/>Android：<br/>public AWResult startSoft (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>packageName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：包名<br/></p>
+						<b>回调函数（Callback）：</b>
+						<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否打开APP<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocalResource", "startSoft", {<br/>&nbsp;&nbsp;"packageName": "com.mall1390.swedding"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .startSoft").html('打开软件');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .startSoft").html('不能打开软件');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_localResource .info .startSoft").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn startSoft">打开＊＊app</button>
+						<span class="info">打开**app：<span class="startSoft"></span></span>
+					</div>
+				</li>	
+			</ul>
+		</div>
+ 
+  <script>
+    var page_localResource = AW.createPageObj("localResource",{
+        init: function() {
+            $('.call').bind('click', AW_localResource.call);
+            $('.clearMsg').bind('click', AW_localResource.clearMsg);
+            $('.isInstall').bind('click', AW_localResource.isInstall);
+            $('.isJailBreak').bind('click', AW_localResource.isJailBreak);
+            $('.openURL').bind('click', AW_localResource.openURL);
+            $('.startSoft').bind('click', AW_localResource.startSoft);
+            $('.pageback').bind('click', AW_localResource.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+             AW.pageBack();
+        },
+        call: function() {
+            AW.invoke("AWLocalResource", "call", {
+                "number": "15881616205"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .call").html('成功');
+                    } else {
+                        $("#page_localResource .info .call").html('失败');
+                    }
+                } else {
+                    $("#page_localResource .info .call").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        clearMsg: function() {
+            AW.invoke("AWLocalResource", "clearMsg", {},
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .clearMsg").html('成功');
+                    } else {
+                        $("#page_localResource .info .clearMsg").html('失败');
+                    }
+                } else {
+                    $("#page_localResource .info .clearMsg").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+        },
+
+        isInstall: function() {
+            AW.invoke("AWLocalResource", "isInstall", {
+                "packageName": "com.mall1390.swedding"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .isInstall").html('已安装');
+                    } else {
+                        $("#page_localResource .info .isInstall").html('未安装');
+                    }
+                } else {
+                    $("#page_localResource .info .isInstall").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        isJailBreak: function() {
+            AW.invoke("AWLocalResource", "isJailBreak", {
+                "folderName": "cache",
+                "fileName": "test1.txt"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .isJailBreak").html('已越狱');
+                    } else {
+                        $("#page_localResource .info .isJailBreak").html('未越狱');
+                    }
+                } else {
+                    $("#page_localResource .info .isJailBreak").html(data.error.code + ":" + data.error.desc);
+                }
+
+            });
+        },
+
+        openURL: function() {
+            AW.invoke("AWLocalResource", "openURL", {
+                "url": "http://www.appanyway.com"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .openURL").html('打开网页');
+                    } else {
+                        $("#page_localResource .info .openURL").html('未打开网页');
+                    }
+                } else {
+                    $("#page_localResource .info .openURL").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        startSoft: function() {
+            AW.invoke("AWLocalResource", "startSoft", {
+                "packageName": "com.mall1390.swedding"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_localResource .info .startSoft").html('打开软件');
+                    } else {
+                        $("#page_localResource .info .startSoft").html('不能打开软件');
+                    }
+                } else {
+                    $("#page_localResource .info .startSoft").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_localResource.addEvent('pageinit', AW_localResource.init)
+    page_localResource.addEvent('pagebeforeshow', AW_localResource.beforeshow)
+    page_localResource.addEvent('pageshow', AW_localResource.show);
+</script>
+</div>
+

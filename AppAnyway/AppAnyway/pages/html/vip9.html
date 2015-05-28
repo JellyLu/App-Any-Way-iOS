@@ -1,0 +1,33 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>王禄琪&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<img src='image/vip9.jpg' />
+			<div class='evevipl'>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;一个理科生的外表有一颗文科生的心。</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;web页面编写、测试。</p>
+			<p><b>邮箱：</b>1148809660@qq.com</p>
+			<p><b>特长：</b>书法 </p>
+			<b>座右铭：</b><p>To begin without the need of hope,to perserve without the expection of success.</p>
+		</div>
+	</div>
+	<script>
+		var page_vip9 = AW.createPageObj("vip9", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip9.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip9.addEvent('pageinit', AW_vip9.init);
+		page_vip9.addEvent('pagebeforeshow', AW_vip9.beforeshow);
+		page_vip9.addEvent('pageshow', AW_vip9.show);	
+  	</script>
+</div>

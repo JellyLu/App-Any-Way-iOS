@@ -1,0 +1,100 @@
+<div id="page_audioRecorder"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf  pageback'><</a>音频&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class='main_li'>
+            <h3>类名：AWAudioRecorder</h3>
+            <b>概述:</b>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;录制音频，录制、暂停、停止。 </p>
+            <b>方法:</b>
+            <ul class='fnli'>
+                <li><h4 class='evefnh'>recordOrPause</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;播放或暂停背景音乐。</p>
+						<b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) recordOrPause:( NSDictionary *param )<br/>Android：<br/>public AWResult recordOrPause (String arguments) </pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>rate：<br/>&nbsp;&nbsp;类型：float<br/>&nbsp;&nbsp;描述：采样率</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：录音/暂停<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/> &nbsp;&nbsp;可能错误代码有：0701、0702</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWAudioRecorder", "recordOrPause", <br/>{<br/>&nbsp;&nbsp;"rate": "22050.0f"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_audioRecorder .content .recordOrPause").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_audioRecorder .content .recordOrPause").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>}); </pre></code>                 
+                        <b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+                        <button class="btn recordOrPause">录音／暂停</button>
+						<span class="content">开始/暂停: <span class="recordOrPause"></span></span>
+                    </div>
+                </li>
+                <li><h4 class='evefnh'>stop</h4>
+                    <div class='licont'>
+                        <b>概述：</b>
+                        <p>停止录音</p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) stop:( NSDictionary *param )<br/>Android：<br/> public AWResult stop (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：音频本地URI<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0702</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWAudioRecorder", "stop", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_audioRecorder .content .stop").html(data.result);<br/>&nbsp;&nbsp;}else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_audioRecorder .content .stop").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                        <b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+                        <button class="btn stop">停止</button>
+						<span class="content">结束：<span class="stop"></span></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+		
+	 <script>
+	    var page_audioRecorder = AW.createPageObj("audioRecorder",{
+	        init: function() {
+	            $('.recordOrPause').bind('click', AW_audioRecorder.recordOrPause);
+	            $('.stop').bind('click', AW_audioRecorder.stop);
+	            $('.pageback').bind('click', AW_audioRecorder.pageback);
+	        },
+	        beforeshow: function() {
+	        },
+	        show: function() {
+	        },
+	
+	        pageback: function() {
+	            AW.pageBack();
+	        },
+	
+	        recordOrPause: function() {
+	            AW.invoke("AWAudioRecorder", "recordOrPause", {
+	                "rate": "22050.0f"
+	            },
+	            function(data) {
+	                if (data.success) {
+	
+	                    $("#page_audioRecorder .content .recordOrPause").html(data.result);
+	
+	                } else {
+	                    $("#page_audioRecorder .content .recordOrPause").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	
+	        stop: function() {
+	            AW.invoke("AWAudioRecorder", "stop", {},
+	            function(data) {
+	                if (data.success) {
+	
+	                    $("#page_audioRecorder .content .stop").html(data.result);
+	
+	                } else {
+	                    $("#page_audioRecorder .content .stop").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        }
+	    });
+	
+	    page_audioRecorder.addEvent('pageinit', AW_audioRecorder.init)
+	    page_audioRecorder.addEvent('pagebeforeshow', AW_audioRecorder.beforeshow)
+	    page_audioRecorder.addEvent('pageshow', AW_audioRecorder.show);
+	</script>
+</div>

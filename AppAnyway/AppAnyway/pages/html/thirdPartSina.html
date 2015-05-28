@@ -1,0 +1,103 @@
+<div id="page_thirdPartSina"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+    <div class='sontopld'><a class='backf pageback'><</a>Sina&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class='main_li'>
+        <h3>类名：AWThirdPartSina</h3>
+        <b>概述:</b>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;Sina微博登录、分享到微博。</p>
+        <b>方法:</b>
+        <ul class='fnli'>
+            <li><h4 class='evefnh'>login</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Sina微博登录。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) login:( NSDictionary *param )<br/>Android：<br/>public AWResult login (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+                    <b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：JSON字符串<br/>&nbsp;&nbsp;描述：返回userID与凭证，如：<br/>{<br/>&nbsp;"userID":"1749108241",<br/>&nbsp;"accessToken":<br/>&nbsp;"2.00PxE4uBb37qLBbd38a930b3Mm278C"<br/>}<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1701、1702、1703、1704、1705、1706、0001</p>
+                    <b>例子：</b>
+                    <code><pre>AW.invoke("AWThirdPartSina", "login", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartSina .content .login").html("userID: " + data.result.userID + " accessToken:" + data.result.accessToken);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartSina .content .login").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                    <b>测试：</b>
+                    <button class="btn login">Sina微博登录</button>
+                    <span class="content">登录：<span class="login"></span></span>
+                </div>
+            </li>
+            <li><h4 class='evefnh'>shareMsg</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;分享内容到Sina微博。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) shareMsg:( NSDictionary *param )<br/>Android：<br/>public AWResult shareMsg (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+					<p>url：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：链接<br/>imageUrl：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：图片的URL<br/>title：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：标题<br/>description：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：内容</p>
+                    <b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否分享成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1701、1702、1703、1704、1705、1706、0001</p>
+                    <b>例子：</b>
+                    <code><pre>var param = {<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com",<br/>&nbsp;&nbsp;"imageUrl": "http://www.appanyway.com/anywayWeb/awdownload/test2.png",<br/>&nbsp;&nbsp;"title": "AppAnyWay",<br/>&nbsp;&nbsp;"description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>};<br/>AW.invoke("AWThirdPartSina", "shareMsg", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartSina .content .shareMsg").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartSina .content .shareMsg").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartSina .content .shareMsg").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                    <b>测试：</b>
+                    <button class="btn shareMsg">分享到Sina微博</button>
+                    <span class="content">分享到Sina微博：<span class="shareMsg"></span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+ <script>
+    var page_thirdPartSina = AW.createPageObj("thirdPartSina",{
+        init: function() {
+            $('.login').bind('click', AW_thirdPartSina.login);
+            $('.shareMsg').bind('click', AW_thirdPartSina.shareMsg);
+            $('.pageback').bind('click', AW_thirdPartSina.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        login: function() {
+
+            AW.invoke("AWThirdPartSina", "login", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_thirdPartSina .content .login").html("userID: " + data.result.userID + " accessToken:" + data.result.accessToken);
+                } else {
+                    $("#page_thirdPartSina .content .login").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        shareMsg: function() {
+            var param = {
+                "url": "http://www.appanyway.com",
+                "imageUrl": baseUrl + "/anywayWeb/awdownload/test2.png",
+                "title": "AppAnyWay",
+                "description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"
+            };
+            AW.invoke("AWThirdPartSina", "shareMsg", param,
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartSina .content .shareMsg").html('成功');
+                    } else {
+                        $("#page_thirdPartSina .content .shareMsg").html('成功');
+                    }
+                } else {
+                    $("#page_thirdPartSina .content .shareMsg").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_thirdPartSina.addEvent('pageinit', AW_thirdPartSina.init)
+    page_thirdPartSina.addEvent('pagebeforeshow', AW_thirdPartSina.beforeshow)
+    page_thirdPartSina.addEvent('pageshow', AW_thirdPartSina.show);
+</script>
+</div>
+

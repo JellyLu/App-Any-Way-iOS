@@ -1,0 +1,27 @@
+.aw-content {
+	   width: 100%;
+	position: relative;
+  overflow-x: hidden;
+}
+
+.aw {
+				   width: 100%;
+				position: absolute;
+				     top: 0;
+				    left: 0;
+				 display: none;
+			  overflow-x: hidden;
+			  overflow-y: auto;
+	   -webkit-transform: translate3d(0, 0, 0);
+		  -moz-transform: translate3d(0, 0, 0);
+		       transform: translate3d(0, 0, 0);
+ -webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	     transform-style: preserve-3d;
+}
+
+.aw-current {
+	display: block;
+	z-index: 2;
+	background:red;
+}

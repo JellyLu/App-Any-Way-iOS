@@ -1,0 +1,68 @@
+<div id="page_vibrate"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>震动&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>		
+			<h3>类名：AWVibrae</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;震动。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>vibrate</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;震动。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) vibrate:( NSDictionary *param )<br/>Android：<br/>public AWResult vibrate (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：震动是否成功<br/>error：无</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWVibrate", "vibrate", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_vibrate .content .vibrate").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_vibrate .content .vibrate").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_vibrate .content .vibrate").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn vibrate">震动</button>
+						<span class="content">震动：<span class="vibrate"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+ 
+ <script>
+    var page_vibrate = AW.createPageObj("vibrate",{
+        init: function() {
+            $('.vibrate').bind('click', AW_vibrate.vibrate);
+            $('.pageback').bind('click', AW_vibrate.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+
+        vibrate: function() {
+            AW.invoke("AWVibrate", "vibrate", {},
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_vibrate .content .vibrate").html('成功');
+                    } else {
+                        $("#page_vibrate .content .vibrate").html('失败');
+                    }
+                } else {
+                    $("#page_vibrate .content .vibrate").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_vibrate.addEvent('pageinit', AW_vibrate.init)
+    page_vibrate.addEvent('pagebeforeshow', AW_vibrate.beforeshow)
+    page_vibrate.addEvent('pageshow', AW_vibrate.show);
+</script>
+</div>
+
+

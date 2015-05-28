@@ -1,0 +1,46 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>柴林香&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+		<img src='image/vip2.jpg' />
+			<div class='evevipl'>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;云南大理人，目前就读于西南科技大学，计算机科学与技术学院软件工程专业研二学生，于2016年7月毕业。</p> 
+			</div>
+		 
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;中间件web端设计、实现、测试。</p>
+			<b>博客地址：</b><br/><p><a href='http://www.cnblogs.com/mulan/'>http://www.cnblogs.com/mulan/</a></p>
+			<p><b>邮箱：</b>1107422758@qq.com </p>
+			<b>技能：</b>
+			<p>&nbsp;&nbsp;熟悉HTML、CSS、JavaScript，了解Java、C，对HTML5有浓厚兴趣。</p>
+			<p><b>特长：</b>什么都喜欢一点！</p>
+			<p><b>座右铭：</b>天生我材必有用！</p>
+			<b>所获荣誉：</b>
+			<p>•2013-2014年 西南科技大学 先进个人奖 <br/>
+			•2013年8月 中国服务外包创新创业大赛 三等奖<br/>
+			•2012-2013年 西南科技大学 计算机科学与技术学院 三好学生</p>
+		</div>
+	</div>
+	<script>
+		var page_vip2 = AW.createPageObj("vip2", {
+			//init:function(){},
+			//beforeshow:function(){},
+			//show:function(){}
+		});
+		var page_vip2 = AW.createPageObj("vip2", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip2.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip2.addEvent('pageinit', AW_vip2.init);
+		page_vip2.addEvent('pagebeforeshow', AW_vip2.beforeshow);
+		page_vip2.addEvent('pageshow', AW_vip2.show);	
+  	</script>
+</div>

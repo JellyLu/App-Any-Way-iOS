@@ -1,0 +1,125 @@
+<div id="page_netWork"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+		<div class='sontopld'><a class='backf pageback'><</a>网络&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWNetWork</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;判断是否连接到网络，获取当前连接网络类型。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>isConnectNetWork</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;判断是否连接到网络。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) isConnectNetWork:( NSDictionary *param )<br/>Android：<br/>public AWResult isConnectNetWork (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否连接到网络<br/>error：无</p>
+						<b>例子：</b>
+						<code><pre>isConnectNetWork: function() {<br/>AW.invoke("AWNetWork", "isConnectNetWork", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .isConnectNetWork").html("已联网");<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .isConnectNetWork").html("未联网");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .isConnectNetWork").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn isConnectNetWork">是否联网</button>
+						<span class="content">是否联网：<span class="isConnectNetWork"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>getSSID</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取SSID(Service Set IDentifier)，即当前连接Wi-Fi的公开名称。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getSSID:( NSDictionary *param )<br/>Android：<br/>public AWResult getSSID (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：如果连接到Wi-Fi，返回Wi-Fi名称，否则返回空字符串。<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：可能错误代码有：1201</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWNetWork", "getSSID", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .getSSID").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .getSSID").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn getSSID">网络名称</button>
+						<span class="content">网络名称：<span class="getSSID"></span></span>
+					</div>
+				</li>				
+				<li><h4 class='evefnh'>getNetWorkType</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取当前连接网络类型。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getNetWorkType:( NSDictionary *param )<br/>Android：<br/>public AWResult getNetWorkType (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：如果未连接到网络，返回“没有网络连接”，连接到网络返回，”WIFI”、”WWAN(4G)”、”WWAN(3G)”、”WWAN(2G)”。<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：可能错误代码有：1201</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWNetWork", "getNetWorkType", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .getNetWorkType").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_netWork .content .getNetWorkType").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn getNetWorkType">网络类型</button>
+						<span class="content">网络类型：<span class="getNetWorkType"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+ 
+ <script>
+    var page_netWork = AW.createPageObj("netWork",{
+        init: function() {
+            $('.isConnectNetWork').bind('click', AW_netWork.isConnectNetWork);
+            $('.getSSID').bind('click', AW_netWork.getSSID);
+            $('.getNetWorkType').bind('click', AW_netWork.getNetWorkType);
+            $('.pageback').bind('click', AW_netWork.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        isConnectNetWork: function() {
+            AW.invoke("AWNetWork", "isConnectNetWork", {},
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_netWork .content .isConnectNetWork").html("已联网");
+                    } else {
+                        $("#page_netWork .content .isConnectNetWork").html("未联网");
+                    }
+                } else {
+                    $("#page_netWork .content .isConnectNetWork").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        getSSID: function(){
+        	AW.invoke("AWNetWork", "getSSID", {},
+       		function(data) {
+            	if (data.success) {
+                	$("#page_netWork .content .getSSID").html(data.result);
+            	} else {
+           			$("#page_netWork .content .getSSID").html(data.error.code + ":" + data.error.desc);
+            	}
+            });
+        },
+        getNetWorkType: function(){
+        	AW.invoke("AWNetWork", "getNetWorkType", {},
+           	function(data) {
+            	if (data.success) {
+                	$("#page_netWork .content .getNetWorkType").html(data.result);
+           		} else {
+                	$("#page_netWork .content .getNetWorkType").html(data.error.code + ":" + data.error.desc);
+            	}
+			});
+        }           
+    });
+    page_netWork.addEvent('pageinit', AW_netWork.init)
+    page_netWork.addEvent('pagebeforeshow', AW_netWork.beforeshow)
+    page_netWork.addEvent('pageshow', AW_netWork.show);
+</script>
+</div>
+

@@ -1,0 +1,41 @@
+﻿<div id = "page_vip1" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>陆杨洁&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<div class='evevipl'>
+				<br/>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;<img class='evevipl' src='image/vip1.jpg' /> 西南科技大学软件工程专业在读研究生一枚，独立、自学能力强，对移动互联网创新有着极大地热情。热爱iOS开发技术，关注移动互联网热点流行趋势，接受新事物能力强。在学校有在学生工作经历，能很好得与人沟通，具有很好的团队合作精神；对参与的工作会付出全部精力和热情。在同学眼里，是一个阳光、积极、负责的人。</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;中间件iOS客户端设计、实现、测试。</p>
+			<b>博客地址：</b><p><a href='http://blog.csdn.net/lyj617' >http://blog.csdn.net/lyj617</a></p>
+			<p><b>邮箱：</b>jelly_6_l@hotmail.com</p>
+			<b>技能：</b>
+			<p>&nbsp;&nbsp;1.专业基本功扎实，能用于实际开发； <br/>
+			&nbsp;&nbsp;2.熟练掌握Objective-C语言，在实际项目中熟练使用；  <br/>
+			&nbsp;&nbsp;3.熟悉Swift、C语言，能阅读JS、HTML、CSS，了解Android开发；<br/>
+			&nbsp;&nbsp;4.熟悉MS Visio、Power Designer等建模工具，有oracle、mysql数据库开发经验； <br/>
+			&nbsp;&nbsp;5.熟悉SVN版本控制工具，掌握规范化的软件开发方法，能够快速有效地完成开发任务。</p>
+			<p><b>特长：</b>摄影 </p>
+			<p><b>座右铭：</b>世界因我而精彩！</p>
+			<b>所获荣誉：</b><p>国家励志奖学金，国家二等专业奖学金</p>
+		</div>
+	</div>
+	<script>
+		var page_vip1 = AW.createPageObj("vip1", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip1.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip1.addEvent('pageinit', AW_vip1.init);
+		page_vip1.addEvent('pagebeforeshow', AW_vip1.beforeshow);
+		page_vip1.addEvent('pageshow', AW_vip1.show);	
+  	</script>	
+</div>

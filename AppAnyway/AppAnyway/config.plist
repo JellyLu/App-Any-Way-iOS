@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileUpload</key>
+	<dict>
+		<key>uploadServerUrl</key>
+		<string>http://www.appanyway.com/anywayWeb/upload/upload_save.action</string>
+		<key>uploadName</key>
+		<string>file</string>
+		<key>uploadAppKey</key>
+		<string>1234567</string>
+	</dict>
+	<key>tx_appKey</key>
+	<string>1104588442</string>
+	<key>Ali</key>
+	<dict>
+		<key>alipay_scheme</key>
+		<string>appanywayalipay</string>
+		<key>alipay_privateKey</key>
+		<string>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAM0QIHof5Rl4Bxtb+w2IwjvceJggWgp1Joz7mgwF9iBkEAPEpT9Z1BDiBl+t00l8uTotkHLbeMMxX8amMQwf4Q0UT/9vpGThG6vzJfDgU8V2zLKS3VGnoBbcgVP6OsyuXlif40KgJIFbSi/L8yFrxM9I6bJ8J65idolvVWifwqmdAgMBAAECgYEAxt4d8PHfl4yMr97LIPwBClas6TNuvveP9GfIpGJfqFgCI/VgIIj4HYtljQKhhoIbjC1GCe2INxw5+wePR2ffMrh6jvu4XZDP2KIZsDBDazXxWjyOeahVxs60wIOStafSOXHcZi1jGC4x3M97Hn42h0LKZe2hCDjzItPxkSihBs0CQQDqk2DnMFMV1FlVIgJto4O2+VOwTSCs9OtbtIvBNapH7GlL1JmYZ4arK8xmNhdEMMje3/QokuR+CxqkvQucv+fHAkEA38q2AaKCg3nXtvmO+KhKs6vZLg0I3LxXGE1oVnV8tg+FRh8V+BnS2d8dQShShrZv9qox+ZIAf5Fx3UVXGiFLewJAKirmH4kTVng+uswLTbQ4KDs3rRigSBca+/g/qzK/coBwCT6lgb0Se1C7RKBynEJ8yXvOw0BsrK/IUVbecIYa3wJBAI0LvOSQ4QMuUte+t+5eWx6ca7gLfQ9qINZvSxha2ewBIjVMuFLzK6Inbc+4MzM2XqCvKeoqq+e66nHUFw6f92sCQBIwvd8XZg7ln4hJ4BoZJxuxLyf3LUZkkEfoVURUpts3ikHUw+ug4hXfGe2P3CJAvo/I6AaYa7mong51kLXz1sk=</string>
+		<key>alipay_publicKey</key>
+		<string>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB</string>
+		<key>alipay_partnerId</key>
+		<string>2088411191656903</string>
+		<key>alipay_sellerId</key>
+		<string>3124440476@qq.com</string>
+	</dict>
+	<key>wx_appKey</key>
+	<string>wxdf28d8d104cabe6f</string>
+	<key>wx_appSecret</key>
+	<string>d00a7bcbc31754408d5750cfdc27f965</string>
+	<key>sinaWeibo_appKey</key>
+	<string>3483487965</string>
+	<key>sinaWeiBo_uri</key>
+	<string>http://www.myhdit.com/</string>
+	<key>baiduNavi_appKey</key>
+	<string>iOw0cPoLzcMIpr5TI66cPmcG</string>
+	<key>baiduStatistics_appKey</key>
+	<string>7103469ea3</string>
+	<key>baiduStatistics_channelID</key>
+	<string>1390mall</string>
+</dict>
+</plist>

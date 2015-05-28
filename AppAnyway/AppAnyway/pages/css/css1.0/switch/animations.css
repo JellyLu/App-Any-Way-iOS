@@ -1,0 +1,163 @@
+/* animation sets */
+/* move from / to  */
+.aw-moveToLeft {
+	-webkit-animation: moveToLeft .9s ease both;
+	-moz-animation: moveToLeft .9s ease both;
+	animation: moveToLeft .9s ease both;
+}
+
+.aw-moveFromLeft {
+	-webkit-animation: moveFromLeft .9s ease both;
+	-moz-animation: moveFromLeft .9s ease both;
+	animation: moveFromLeft .9s ease both;
+}
+
+.aw-moveToRight {
+	-webkit-animation: moveToRight .9s ease both;
+	-moz-animation: moveToRight .9s ease both;
+	animation: moveToRight .9s ease both;
+}
+
+.aw-moveFromRight {
+	-webkit-animation: moveFromRight .9s ease both;
+	-moz-animation: moveFromRight .9s ease both;
+	animation: moveFromRight .9s ease both;
+}
+
+/*****fade********/
+.aw-fade{
+	-webkit-animation:fade .9s ease both;
+	-moz-animation: fade .9s ease both;
+	animation: fade .9s ease both;
+}
+
+/*****move from /to and fade***/
+
+.aw-moveToLeftFade{
+	-webkit-animation: moveToLeftFade .9s ease both;
+	-moz-animation:moveToLeftFade .9s ease both;
+	animation:moveToleftFade .9s ease both;
+}
+
+.aw-moveFromLeftFade{
+	-webkit-animation:moveFromLeftFade .9s ease both;
+	-moz-animation:moveFromLeftFade .9s ease both;
+	animation:moveFromLeftFade .9s ease both;
+}
+
+.aw-moveToRightFade{
+	-webkit-animation:moveToRightFade .9s ease both;
+	-moz-animation:moveToRightFade .9s ease both;
+	animation:moveToRightFade .9s ease both;
+}
+
+.aw-moveFromRightFade{
+	-webkit-animation:moveFromLeftFade .9s ease both;
+	-moz-animation:moveFromLeftFade .9s ease both;
+	animation:moveFromLeftFade .9s ease both;
+}
+
+/********************************* keyframes **************************************/
+
+/* move from / to  */
+
+@-webkit-keyframes moveToLeft {
+	to { -webkit-transform: translateX(-100%); }
+}
+@-moz-keyframes moveToLeft {
+	to { -moz-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	to { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+@-moz-keyframes moveFromLeft {
+	from { -moz-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+	from { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes moveToRight { 
+	to { -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveToRight { 
+	to { -moz-transform: translateX(100%); }
+}
+@keyframes moveToRight { 
+	to { transform: translateX(100%); }
+}
+
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveFromRight {
+	from { -moz-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { transform: translateX(100%); }
+}
+
+
+/***fade***/
+@-webkit-keyframes fade{
+	to{ opacity: 0.98; }
+}
+
+@-moz-keyframes fade{
+	to{ opacity: 0.98; }
+}
+
+@keyframes fade{
+	to{ opacity: 0.98;}
+}
+
+
+/** move from / to and fade **/
+@-webkit-keyframes moveToLeftFade{
+	to { opacity: 0.98; -webkit-transform: translaleX(-100%);}
+}
+@-moz-keyframes moveToLeftFade{
+	to { opacity: 0.98; -moz-transform: translaleX(-100%);}
+}
+@keyframes moveToLeftFade{
+	to { opacity: 0.98; transform: translaleX(-100%);}
+}
+
+
+@-webkit-keyframes moveFromLeftFade{
+	to { opacity: 0.98; -webkit-transform: translaleX(-100%);}
+}
+@-moz-keyframes moveFromLeftFade{
+	to { opacity: 0.98; -moz-transform: translaleX(-100%);}
+}
+@keyframes moveFromLeftFade{
+	to { opacity: 0.98; transform: translaleX(-100%);}
+}
+
+@-webkit-keyframes moveToRightFade{
+	to { opacity: 0.98; -webkit-transform: translaleX(100%);}
+}
+@-moz-keyframes moveToRightFade{
+	to { opacity: 0.98; -moz-transform: translaleX(100%);}
+}
+@keyframes moveToRightFade{
+	to { opacity: 0.98; transform: translaleX(100%);}
+}
+
+
+@-webkit-keyframes moveFromRightFade {
+	from { opacity: 0.98; -webkit-transform: translateX(100%); }
+}
+@-moz-keyframes moveFromRightFade {
+	from { opacity: 0.98; -moz-transform: translateX(100%); }
+}
+@keyframes moveFromRightFade {
+	from { opacity: 0.98; transform: translateX(100%); }
+}
+
+
+

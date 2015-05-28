@@ -1,0 +1,62 @@
+<div id="page_scan"  class="AWPage">   
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>扫一扫&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>	
+			<h3>类名：AWScan</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;扫描二维码、条形码。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>scan</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;扫描二维码或条形码。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) scan:( NSDictionary *param )<br/>Android：<br/>public AWResult scan (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：扫描结果<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有1301、0007</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWScan", "scan", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_scan .content .scan").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_scan .content .scan").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn scan">扫一扫</button>
+						<span class="content">扫一扫：<span class="scan"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	 
+   <script>
+    var page_scan = AW.createPageObj("scan",{
+        init: function() {
+            $('.scan').bind('click', AW_scan.scan);
+            $('.pageback').bind('click', AW_scan.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+           AW.pageBack();
+        },
+        scan: function() {
+            AW.invoke("AWScan", "scan", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_scan .content .scan").html(data.result);
+                } else {
+                    $("#page_scan .content .scan").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_scan.addEvent('pageinit', AW_scan.init)
+    page_scan.addEvent('pagebeforeshow', AW_scan.beforeshow)
+    page_scan.addEvent('pageshow', AW_scan.show);
+	</script>
+</div>
+

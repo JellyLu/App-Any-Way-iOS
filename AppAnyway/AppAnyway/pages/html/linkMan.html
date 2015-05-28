@@ -1,0 +1,148 @@
+<div id="page_linkMan"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>联系人&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class='main_li'>
+            <h3>类名：AWLinkMan</h3>
+            <b>概述:</b>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;通讯录，添加、删除联系人、查看所有联系人。</p>
+            <b>方法:</b>
+            <ul class='fnli'>
+                <li><h4 class='evefnh'>addLinkMan</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;添加联系人。</p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) addLinkMan:( NSDictionary *param )<br/>Android：<br/>-public AWResult addLinkMan (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>nickName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：昵称<br/>firstName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：姓<br/>lastName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：名<br/>tel：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：电话号码</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否添加成功<br/>error：无</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWLinkMan", "addLinkMan", {<br/>&nbsp;&nbsp;"nickName": "aa",<br/>&nbsp;&nbsp;"firstName": "a",<br/>&nbsp;&nbsp;"lastName": "b",<br/>&nbsp;&nbsp;"tel": "15881616205"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .addLinkMan").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .addLinkMan").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .addLinkMan").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                        <b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn addLinkMan">添加联系人</button>
+						<span class="content">添加联系人：<span class="addLinkMan"></span></span>
+                    </div>
+                </li>
+                <li><h4 class='evefnh'>allLinkMan</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;获取所有联系人的姓名与号码。</p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) allLinkMan:( NSDictionary *param )<br/>Android：<br/>public AWResult allLinkMan (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：JSON字符串<br/>&nbsp;&nbsp;描述：返回所有联系人的电话号码与姓名，如：<br/>{<br/>&nbsp;{<br/>&nbsp;&nbsp;"realName":"Jelly",<br/>&nbsp;&nbsp;"tel":"15881616205"<br/>&nbsp;},<br/>&nbsp;{&nbsp;&nbsp;"realName":"John",<br/>&nbsp;&nbsp;"tel":"15881616206"<br/>&nbsp;}<br/>}<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0004、0901</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWLinkMan", "allLinkMan", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var ob = data.result;<br/>&nbsp;&nbsp;&nbsp;&nbsp;var html = "";<br/>&nbsp;&nbsp;&nbsp;&nbsp;for (var i = 0, count = ob.length; i < count; i++) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html += " " + ob[i].realName + ":" + ob[i].tel + ";";<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .allLinkMan").html(html);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .allLinkMan").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                        <b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+                        <button class="btn allLinkMan">获取所有联系人</button>
+						<span class="content">所有联系人：<span class="allLinkMan"></span></span>
+                    </div>
+                </li>
+                    <li><h4 class='evefnh'>deleteLinkMan</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;删除指定联系人。</p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) deleteLinkMan:( NSDictionary *param )<br/>Android：<br/> public AWResult deleteLinkMan (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                        <p>fullName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：姓名（由firstName和lastName组成的）。<br/>tel：<br/>&nbsp;&nbsp;类型：字符串<br/> &nbsp;&nbsp;描述：电话号码</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否删除成功<br/>error：无</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWLinkMan", "deleteLinkMan", {<br/>&nbsp;&nbsp;"fullName": "ab",<br/>&nbsp;&nbsp;"tel": "15881616205"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .deleteLinkMan").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .deleteLinkMan").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_linkMan .content .deleteLinkMan").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>                 
+                        <b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+                        <button class="btn deleteLinkMan">删除联系人</button>
+						<span class="content">删除联系人：<span class="deleteLinkMan"></span></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+ 
+ <script>
+    var page_linkMan = AW.createPageObj("linkMan",{
+        init: function() { 
+            $('.addLinkMan').bind('click', AW_linkMan.addLinkMan);
+            $('.allLinkMan').bind('click', AW_linkMan.allLinkMan);
+            $('.deleteLinkMan').bind('click', AW_linkMan.deleteLinkMan);
+            $('.pageback').bind('click', AW_linkMan.pageback);
+        },
+        beforeshow: function() {
+            //alert("one-before");
+        },
+        show: function() {
+            //alert("one-show");
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+
+        addLinkMan: function(data) {
+            AW.invoke("AWLinkMan", "addLinkMan", {
+                "nickName": "aa",
+                "firstName": "a",
+                "lastName": "b",
+                "tel": "15881616205"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_linkMan .content .addLinkMan").html('成功');
+                    } else {
+                        $("#page_linkMan .content .addLinkMan").html('失败');
+                    }
+                } else {
+                    $("#page_linkMan .content .addLinkMan").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        allLinkMan: function() {
+            AW.invoke("AWLinkMan", "allLinkMan", {},
+            function(data) {
+                if (data.success) {
+                    var ob = data.result;
+                    var html = "";
+                    for (var i = 0,
+                    count = ob.length; i < count; i++) {
+                        html += " " + ob[i].realName + ":" + ob[i].tel + ";";
+                    }
+                    $("#page_linkMan .content .allLinkMan").html(html);
+                } else {
+                    $("#page_linkMan .content .allLinkMan").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        deleteLinkMan: function() {
+            AW.invoke("AWLinkMan", "deleteLinkMan", {
+                "fullName": "ab",
+                "tel": "15881616205"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_linkMan .content .deleteLinkMan").html('成功');
+                    } else {
+                        $("#page_linkMan .content .deleteLinkMan").html('失败');
+                    }
+                } else {
+                    $("#page_linkMan .content .deleteLinkMan").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_linkMan.addEvent('pageinit', AW_linkMan.init)
+    page_linkMan.addEvent('pagebeforeshow', AW_linkMan.beforeshow)
+    page_linkMan.addEvent('pageshow', AW_linkMan.show);
+</script>
+</div>

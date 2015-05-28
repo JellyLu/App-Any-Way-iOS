@@ -1,0 +1,55 @@
+﻿<div id = "page_vip" class="AWPage">
+	<link rel="stylesheet" href="css/vip.css" type="text/css">
+	<div id="main_menu">
+		<ul class='menuul'>
+			<li><a href="javascript:changePage('menuHome')"><img src='image/2.png' />中间件</a></li>
+			<li><a href="javascript:changePage('home')" ><img src='image/3.png' />API</a></li>
+			<li><a href="javascript:changePage('pretest')" ><img src='image/4.png' />性能测试</a></li>
+			<li><a class='fristli'><img src='image/5.png' />团队成员</a></li>
+		</ul>
+	</div>
+	<div id="mainct">
+		<div id="main-cont">
+			<div class='topld'><img class='tomenu' src='image/1.png' />团队成员&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			<div class='vipic'>
+				<a href="javascript:AW.changePage('vip0')"><img class='topl' src='image/vip0.jpg' ></img></a>
+				<div class='topr'>
+					<a href="javascript:AW.changePage('vip1')"><img class='indiv' src='image/vip1.jpg' ></img></a>
+					<img class='indiv' src='image/indiv1.jpg' ></img>
+				</div>
+				<a href="javascript:AW.changePage('vip2')"><img class='thrrd' src='image/vip2.jpg' ></img></a>
+				<div class='sencd'>
+					<a href="javascript:AW.changePage('vip3')"><img class='indiv' src='image/vip3.jpg' ></img></a>
+					<img class='indiv' src='image/indiv2.jpg' ></img>
+				</div>
+				<a href="javascript:AW.changePage('vip4')"><img class='sencd' src='image/vip4.jpg' ></img></a>
+				<div class='sencd'>
+					<a href="javascript:AW.changePage('vip5')"><img class='indiv' src='image/vip5.jpg' ></img></a>
+					<img class='indiv' src='image/indiv3.jpg' ></img>
+				</div>
+				<a href="javascript:AW.changePage('vip6')"><img class='sencd' src='image/vip6.jpg'  name='vip6' ></img></a>
+				<a href="javascript:AW.changePage('vip7')"><img class='thrrd' src='image/vip7.jpg'  name='vip7' ></img></a>
+				<a href="javascript:AW.changePage('vip8')"><img class='sencd' src='image/vip8.jpg'  name='vip8' ></img></a>
+				<div class='sencd'>
+					<a href="javascript:AW.changePage('vip9')"><img class='indiv' src='image/vip9.jpg'  name='vip9' ></img></a>
+					<img class='indiv' src='image/indiv4.jpg' ></img>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var page_vip = AW.createPageObj("vip", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip.addEvent('pageinit', AW_vip.init);
+		page_vip.addEvent('pagebeforeshow', AW_vip.beforeshow);
+		page_vip.addEvent('pageshow', AW_vip.show);	
+  	</script>
+</div>

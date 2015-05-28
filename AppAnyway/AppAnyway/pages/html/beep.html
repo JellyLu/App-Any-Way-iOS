@@ -1,0 +1,67 @@
+<div id="page_beep"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>蜂鸣&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class='main_li'>
+            <h3>类名：AWBeep</h3>
+            <b>概述:</b>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;蜂鸣。</p>
+            <b>方法:</b>
+            <ul class='fnli'>
+                <li><h4 class='evefnh'>beep</h4>
+                    <div class='licont'>
+                        <b>功能：</b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;蜂鸣。</p>
+                        <b>方法定义：</b>
+                        <code><pre>iOS：<br/>-(void) beep:( NSDictionary *param )<br/>Android：<br/>public AWResult beep (String arguments)</pre></code>
+                        <b>参数（Parameters）：</b>
+                       	<p>soundID：<br/>&nbsp;&nbsp;类型：int<br/>&nbsp;&nbsp;描述：系统声音的ID<br/>numberOfLoops：<br/>&nbsp;&nbsp;类型：int<br/>&nbsp;&nbsp;描述：蜂鸣循环次数</p>
+                        <b>回调函数（Callback）：</b>
+                        <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：蜂鸣是否成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有0801</p>
+                        <b>例子：</b>
+                        <code><pre>AW.invoke("AWBeep", "beep", {<br/>&nbsp;&nbsp;"soundID": "1001",<br/>&nbsp;&nbsp;"numberOfLoops": "2"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_beep .content .beep").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_beep .content .beep").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_beep .content .beep").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>              
+                        <b>可用性:</b>
+                        <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                        <b>测试：</b>
+                        <button class="btn beep">蜂鸣</button>
+						<span class="content">蜂鸣：<span class="beep"></span></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+	 <script>
+	    var page_beep = AW.createPageObj("beep",{
+	        init: function() {
+	            $('.beep').bind('click', AW_beep.beep);
+	            $('.pageback').bind('click', AW_beep.pageback);
+	        },
+	        beforeshow: function() {},
+	        show: function() {},
+	        beep: function() {
+	            AW.invoke("AWBeep", "beep", {
+	                "soundID": "1001",
+	                "numberOfLoops": "2"
+	            },
+	            function(data) {
+	                if (data.success) {
+	                    if (data.result) {
+	                        $("#page_beep .content .beep").html('成功');
+	                    } else {
+	                        $("#page_beep .content .beep").html('失败');
+	                    }
+	                } else {
+	                    $("#page_beep .content .beep").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        pageback: function() {
+	            AW.pageBack();
+	        }
+	    });
+	
+	    page_beep.addEvent('pageinit', AW_beep.init)
+	    page_beep.addEvent('pagebeforeshow', AW_beep.beforeshow)
+	    page_beep.addEvent('pageshow', AW_beep.show);
+	</script>
+</div>
+

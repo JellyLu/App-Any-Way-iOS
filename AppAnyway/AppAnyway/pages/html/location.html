@@ -1,0 +1,84 @@
+<div id="page_location"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+		<div class='sontopld'><a class='backf pageback'><</a>定位&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWLocation</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;定位。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'> setLocation</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;设置定位开启与关闭。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) setLocation:( NSDictionary *param )<br/>Android：<br/>public AWResult setLocation (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>isLocate：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：开启：true，关闭：false</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：JSON字符串<br/>&nbsp;&nbsp;描述：返回城市名、经度、纬度，如：<br/>{<br/>&nbsp;&nbsp;"cityName":"绵阳",<br/>&nbsp;&nbsp;"latitude":"31.533972",<br/>&nbsp;&nbsp;"longitude":"104.701834",<br/>}<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0006、1001</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWLocation", "setLocate", {<br/>&nbsp;&nbsp;"isLocate": true<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var html = data.result.cityName + " :" + data.result.latitude + " , " + data.result.longitude;<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_location .content .setLocateOn").html(html);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_location .content .setLocateOn").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});<br/><br/>AW.invoke("AWLocation", "setLocate", {<br/>&nbsp;&nbsp;"isLocate": false<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_location .content .setLocateOff").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_location .content .setLocateOff").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_location .content .setLocateOff").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性：</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn setLocateOn">开启定位</button>
+						<span class="content">定位：<span class="setLocateOn"></span></span>
+						<button class="btn setLocateOff">关闭定位</button>
+						<span class="content">定位：<span class="setLocateOff"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+ 
+ <script>
+    var page_location = AW.createPageObj("location",{
+        init: function() { 
+            $('.setLocateOn').bind('click', AW_location.setLocateOn);
+            $('.setLocateOff').bind('click', AW_location.setLocateOff);
+            $('.pageback').bind('click', AW_location.pageback);
+        },
+        beforeshow: function() { 
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        setLocateOn: function() {
+            AW.invoke("AWLocation", "setLocate", {
+                "isLocate": true
+            },
+            function(data) {
+                if (data.success) {
+                    var html = data.result.cityName + " :" + data.result.latitude + " , " + data.result.longitude;
+                    $("#page_location .content .setLocateOn").html(html);
+                } else {
+                    $("#page_location .content .setLocateOn").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        setLocateOff: function() {
+            AW.invoke("AWLocation", "setLocate", {
+                "isLocate": false
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_location .content .setLocateOff").html('成功');
+                    } else {
+                        $("#page_location .content .setLocateOff").html('失败');
+                    }
+                } else {
+                    $("#page_location .content .setLocateOff").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_location.addEvent('pageinit', AW_location.init)
+    page_location.addEvent('pagebeforeshow', AW_location.beforeshow)
+    page_location.addEvent('pageshow', AW_location.show);
+</script>
+</div>

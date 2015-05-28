@@ -1,0 +1,126 @@
+<div id="page_thirdPartQQ"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+    <div class='sontopld'><a class='backf pageback'><</a>QQ&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class='main_li'>
+        <h3>类名：AWThirdPartQQ</h3>
+        <b>概述:</b>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;QQ登录、分享到QQ好友与QQ空间。</p>
+		<b>方法:</b>
+        <ul class='fnli'>
+            <li><h4 class='evefnh'>login</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;QQ登录。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) login:( NSDictionary *param )<br/>Android：<br/>public AWResult login (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+                    <b>回调函数（Callback）：</b>
+                    <p>result：<br/>&nbsp;&nbsp;类型：JSON字符串<br/>&nbsp;&nbsp;描述：返回昵称与凭证，如：<br/>{<br/>&nbsp;&nbsp;"userName":"Jelly",<br/>&nbsp;&nbsp;"accessToken":<br/>&nbsp;&nbsp;"FF9BB90883899B1E7733190C6362A473"<br/>}<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1606、1607、1608、1609、1610、1611、1612、0001</p>
+                    <b>例子：</b>
+                    <code><pre>AW.invoke("AWThirdPartQQ", "login", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .login").html("userName: " + data.result.userName + " accessToken:" + data.result.accessToken);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .login").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                    <b>测试：</b>
+                    <button class="btn login">qq登录</button>
+                    <span class="info">登录：<span class="login"></span></span>
+                </div>
+            </li>
+            <li><h4 class='evefnh'>shareMsg</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;分享内容到QQ好友或QQ空间。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) shareMsg:( NSDictionary *param )<br/>Android：<br/>public AWResult shareMsg (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+                    <p>type：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：分享到QQ好友、QQ空间，”qq”为QQ好友，”qzone”为QQ空间。<br/>url：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：链接<br/>imageUrl：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：图片的URL<br/>title：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：标题<br/>description：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：内容</p>
+                    <b>回调函数（Callback）：</b>
+                    <p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：返回是否分享成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：1601、1602、1603、1604、1605、0001</p>
+                    <b>例子：</b>
+                    <code><pre>var param = {<br/>&nbsp;&nbsp;"type": "qzone",<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com",<br/>&nbsp;&nbsp;"imageUrl": "http://www.appanyway.com/anywayWeb/awdownload/test2.png",<br/>&nbsp;&nbsp;"title": "AppAnyWay",<br/>&nbsp;&nbsp;"description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>};<br/>AW.invoke("AWThirdPartQQ", "shareMsg", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQzone").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQzone").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQzone").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});<br/><br/>var param = {<br/>&nbsp;&nbsp;"type": "qq",<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com",<br/>&nbsp;&nbsp;"imageUrl": "http://www.appanyway.com/anywayWeb/awdownload/test2.png",<br/>&nbsp;&nbsp;"title": "AppAnyWay",<br/>&nbsp;&nbsp;"description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>};<br/>AW.invoke("AWThirdPartQQ", "shareMsg", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQQ").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQQ").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartQQ .content .shareMsgQQ").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+                    <b>测试：</b>
+					<button class="btn shareMsgQzone">分享到空间</button>
+					<span class="content">分享到空间：<span class="shareMsgQzone"></span></span>
+					<button class="btn shareMsgQQ">分享给qq好友</button>
+					<span class="content">分享给qq好友：<span class="shareMsgQQ"></span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+ <script>
+    var page_thirdPartQQ = AW.createPageObj("thirdPartQQ", {
+        init: function() {
+            $('.login').bind('click', AW_thirdPartQQ.login);
+            $('.shareMsgQzone').bind('click', AW_thirdPartQQ.shareMsgQzone);
+            $('.shareMsgQQ').bind('click', AW_thirdPartQQ.shareMsgQQ);
+            $('.pageback').bind('click', AW_thirdPartQQ.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        login: function() {
+            AW.invoke("AWThirdPartQQ", "login", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_thirdPartQQ .info .login").html("userName: " + data.result.userName + " accessToken:" + data.result.accessToken);
+                } else {
+                    $("#page_thirdPartQQ .info .login").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        shareMsgQzone: function() {
+            var param = {
+                "type": "qzone",
+                "url": "http://www.appanyway.com",
+                "imageUrl": baseUrl + "/anywayWeb/awdownload/test2.png",
+                "title": "AppAnyWay",
+                "description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"
+            };
+            AW.invoke("AWThirdPartQQ", "shareMsg", param,
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartQQ .content .shareMsgQzone").html('成功');
+                    } else {
+                        $("#page_thirdPartQQ .content .shareMsgQzone").html('成功');
+                    }
+                } else {
+                    $("#page_thirdPartQQ .content .shareMsgQzone").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        shareMsgQQ: function() {
+            var param = {
+                "type": "qq",
+                "url": "http://www.appanyway.com",
+                "imageUrl": baseUrl + "/anywayWeb/awdownload/test2.png",
+                "title": "AppAnyWay",
+                "description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"
+            };
+            AW.invoke("AWThirdPartQQ", "shareMsg", param,
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartQQ .content .shareMsgQQ").html('成功');
+                    } else {
+                        $("#page_thirdPartQQ .content .shareMsgQQ").html('成功');
+                    }
+                } else {
+                    $("#page_thirdPartQQ .content .shareMsgQQ").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_thirdPartQQ.addEvent('pageinit', AW_thirdPartQQ.init)
+    page_thirdPartQQ.addEvent('pagebeforeshow', AW_thirdPartQQ.beforeshow)
+    page_thirdPartQQ.addEvent('pageshow', AW_thirdPartQQ.show);
+</script>
+</div>
+

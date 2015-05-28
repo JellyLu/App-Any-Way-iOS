@@ -1,0 +1,37 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>董文秀&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<img src='image/vip5.jpg' />
+			<div class='evevipl'>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;性格开朗，处事乐观，喜欢交友，旅游，爱好电脑、科普知识。追求人格的自我完善，人际关系和谐，适应环境能力较强，习惯事情或问题及早解决。最大的满足感在于该做的事顺利完成，以便有精力去关注其他感兴趣的事情。</p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;AppAnyway Demo 页面开发、测试。</p>
+			<b>博客地址：</b><p><a href='http://blog.csdn.net/forever_yq'>http://blog.csdn.net/forever_yq</a></p>
+			<p><b>邮箱：</b>1554136322@qq.com</p>
+			<b>技能：</b>
+			<p>&nbsp;&nbsp;掌握 HTML/HTML5，CSS/CSS3，熟悉 DIV+CSS 布局，能完成手机、网站页面制作；熟悉 Javascript、Java、Sql Server、MySQL；熟练使用前端开发框架库类 jQuery，能基于框架写基本扩展应用；熟练使用 PS，Fireworks 切图，熟悉页面架构和布局。</p>
+			<p><b>特长：</b>排球、日语、长跑</p>
+			<b>座右铭：</b><p>人因梦想而伟大，因学习而改变，更因行动而成功！</p>
+			<b>所获荣誉：</b><p>国奖励志奖学金、院学习成绩优秀奖。</p>
+		</div>
+	</div>
+	<script>
+		var page_vip5 = AW.createPageObj("vip5", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip5.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip5.addEvent('pageinit', AW_vip5.init);
+		page_vip5.addEvent('pagebeforeshow', AW_vip5.beforeshow);
+		page_vip5.addEvent('pageshow', AW_vip5.show);	
+  	</script>
+</div>

@@ -1,0 +1,52 @@
+html,body{
+			  width: 100%;
+			 margin: 0;
+			padding: 0;
+		 overflow-x: hidden;
+}
+
+.main{
+	           width: 100%;
+	         padding: 0;
+	      overflow-x: hidden;
+}
+
+.aw-page{
+			   width: 100%;
+		  background: #0ac2d2;
+		  overflow-x: hidden;
+}
+
+/******假设有header******/
+.ptHeader{
+			   width: 100%;
+			  height: 40px;
+		 line-height: 40px;
+    background-color: #EDEDED;
+	      	position: fixed;
+	      	  	 top: 0;
+	      		left: 0;
+}
+
+.ptHeader .item{
+				width: 20%;
+			    float: left;
+}
+
+.ptFooter{
+			   width: 100%;
+			  height: 40px;
+		 line-height: 40px;
+    background-color: #EDEDED;
+	 -moz-box-shadow: 0px -5px 5px #888888; /* 老的 Firefox */
+  -webkit-box-shadow: 0px -5px 5px #888888;
+	      box-shadow: 0px -5px 5px #888888;
+	      	position: fixed;
+	      	  bottom: 0;
+	      		left: 0;
+}
+
+.ptFooter .item{
+				width: 20%;
+			    float: left;
+}

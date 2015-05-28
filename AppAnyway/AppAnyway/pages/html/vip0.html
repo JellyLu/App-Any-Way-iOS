@@ -1,0 +1,25 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>杨雷&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<img src='image/vip.jpg' />
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;AppAnyway项目的发起者和领导者，主要负责项目主体框架设计、框架性能优化和编码指导工作。从2011年开始手机混合APP开发工作，首次提出手机APP本地化B/S模型并应用于10余个App开发中，于2014年底正式启动AppAnyway项目。现在西南科技大学计算机学院任教。</p> 
+		</div>
+	</div>
+	<script>
+		var page_vip0 = AW.createPageObj("vip0", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip0.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip0.addEvent('pageinit', AW_vip0.init);
+		page_vip0.addEvent('pagebeforeshow', AW_vip0.beforeshow);
+		page_vip0.addEvent('pageshow', AW_vip0.show);	
+  	</script>
+</div>

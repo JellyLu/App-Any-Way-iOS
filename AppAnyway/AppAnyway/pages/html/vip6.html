@@ -1,0 +1,34 @@
+﻿<div id = "page_vip0" class="AWPage">
+	<link rel="stylesheet" href="css/evevip.css" type="text/css">
+	<div id="main-cont">
+		<div class='sontopld'><a class='backf pageback'><</a>徐超(Peter)&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='vipcont'>
+			<div class='evevipl'>
+				<br/>
+				<b>个人简介：</b>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;<img src='image/vip6.jpg' />Experience life from the code, to be myself. </p> 
+			</div>
+			<b>项目中职责：</b>
+			<p>&nbsp;&nbsp;web页面编写、测试。</p>
+			<b>邮箱：</b><p>905256774@qq.com </p>
+			<p><b>技能：</b>Enable to use knowledge of Javascript and Css, Jquery know the fundamental of PHP and some PS skills.</p>
+			<p><b>特长：</b>I just enjoy running and listening to the music, especially western music. Although I can play the guitar, I don’t shine at it.  </p>
+			<p><b>座右铭：</b>Where there is well, there is a way.</p>
+		</div>
+	</div>
+	<script>
+		var page_vip6 = AW.createPageObj("vip6", {
+			init:function(){
+				$('.pageback').bind('click', AW_vip6.pageback);
+			},
+			beforeshow:function(){},
+			show:function(){},     
+			pageback:function() {
+				AW.pageBack();
+			}
+		});
+		page_vip6.addEvent('pageinit', AW_vip6.init);
+		page_vip6.addEvent('pagebeforeshow', AW_vip6.beforeshow);
+		page_vip6.addEvent('pageshow', AW_vip6.show);	
+  	</script>
+</div>

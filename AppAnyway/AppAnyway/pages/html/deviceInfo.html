@@ -1,0 +1,182 @@
+<div id="page_deviceInfo" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>设备信息&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	<div class='main_li'>
+			<h3>类名：AWDeviceInfo</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;获取设备相关信息，屏幕宽度、高度、设备名称、imei、系统版本号。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>getBodyWidth</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取设备屏幕宽度。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getBodyWidth:( NSDictionary *param )<br/>Android：<br/>public AWResult getBodyWidth (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：屏幕宽度，如320<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0301</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWDeviceInfo", "getBodyWidth", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .bodyWidth").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .bodyWidth").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试:</b>
+						<button class="btn getBodyWidth">获取屏幕宽度</button>    
+						<span class="content">宽度：<span class="bodyWidth"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>getBodyHeight</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取设备屏幕高度。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getBodyHeight:( NSDictionary *param )<br/>Android：<br/>public AWResult getBodyHeight (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：屏幕高度,如568<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0302</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWDeviceInfo", "getBodyHeight", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .bodyHeight").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .bodyHeight").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn getBodyHeight">获取屏幕高度</button>
+						<span class="content">高度：<span class="bodyHeight"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>getDeviceName</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取设备名称。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getDeviceName:( NSDictionary *param )<br/>Android：<br/>public AWResult getDeviceName (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：设备名称,如Jelly’s iPhone<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0303</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWDeviceInfo", "getDeviceName", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .deviceName").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .deviceName").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn getDeviceName">获取设备名称</button>
+						<span class="content">设备名称：<span class="deviceName"></span></span>
+					</div>
+				</li>
+				<li><h4 class='evefnh'>getImei</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;设备唯一32位标识。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getImei:( NSDictionary *param )<br/>Android：<br/>public AWResult getImei (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：设备唯一32位标识,如：<br/>BE553E30F4954CF38483098A089C8271(iOS)、863908027430839（Android）<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0304</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWDeviceInfo", "getImei", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .imei").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .imei").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>补充说明：</b>
+						<p>iOS中由于设备获取设备IMEI是私有类，不能通过App Store审核，所以采用设备UUID替代。</p>
+						<b>测试：</b>
+						<button class="btn getImei">获取IMEI</button>
+						<span class="content">IMEI：<span class="imei"></span></span>
+					</div>
+				</li>		
+				<li><h4 class='evefnh'>getOSVersion</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;获取设备系统版本号。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) getOSVersion:( NSDictionary *param )<br/>Android：<br/>public AWResult getOSVersion (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：系统版本号，如7.1.1<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有0305</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWDeviceInfo", "getOSVersion", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .OSVersion").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_deviceInfo .content .OSVersion").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn getOSVersion">获取系统版本号</button>
+						<span class="content">系统版本号：<span class="OSVersion"></span></span>
+					</div>
+				</li>	
+			</ul>
+		</div>
+		
+	  <script>
+	    var page_deviceInfo = AW.createPageObj("deviceInfo",{
+	        init: function() {
+	            $('.getBodyWidth').click(AW_deviceInfo.getBodyWidth);
+	            $('.getBodyHeight').click(AW_deviceInfo.getBodyHeight);
+	            $('.getDeviceName').click(AW_deviceInfo.getDeviceName);
+	            $('.getImei').click(AW_deviceInfo.getImei);
+	            $('.getOSVersion').click(AW_deviceInfo.getOSVersion);
+	            $('.pageback').bind('click', AW_deviceInfo.pageback);
+	        },
+	        beforeshow: function() {},
+	        show: function() {},
+	        getBodyWidth: function() {
+	            AW.invoke("AWDeviceInfo", "getBodyWidth", {},
+	            function(data) {
+	                if (data.success) {
+	                    $("#page_deviceInfo .content .bodyWidth").html(data.result);
+	                } else {
+	                    $("#page_deviceInfo .content .bodyWidth").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        getBodyHeight: function() {
+	            AW.invoke("AWDeviceInfo", "getBodyHeight", {},
+	            function(data) {
+	                if (data.success) {
+	                    $("#page_deviceInfo .content .bodyHeight").html(data.result);
+	                } else {
+	                    $("#page_deviceInfo .content .bodyHeight").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        getDeviceName: function() {
+	            AW.invoke("AWDeviceInfo", "getDeviceName", {},
+	            function(data) {
+	                if (data.success) {
+	                    $("#page_deviceInfo .content .deviceName").html(data.result);
+	                } else {
+	                    $("#page_deviceInfo .content .deviceName").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        getImei: function() {
+	            AW.invoke("AWDeviceInfo", "getImei", {},
+	            function(data) {
+	                if (data.success) {
+	                    $("#page_deviceInfo .content .imei").html(data.result);
+	                } else {
+	                    $("#page_deviceInfo .content .imei").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        getOSVersion: function() {
+	            AW.invoke("AWDeviceInfo", "getOSVersion", {},
+	            function(data) {
+	                if (data.success) {
+	                    $("#page_deviceInfo .content .OSVersion").html(data.result);
+	                } else {
+	                    $("#page_deviceInfo .content .OSVersion").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        },
+	        pageback: function() {
+	            AW.pageBack();
+	        }
+	    });
+	
+	    page_deviceInfo.addEvent('pageinit', AW_deviceInfo.init)
+	    page_deviceInfo.addEvent('pagebeforeshow', AW_deviceInfo.beforeshow)
+	    page_deviceInfo.addEvent('pageshow', AW_deviceInfo.show);
+	</script>
+</div>
+

@@ -1,0 +1,69 @@
+<div id = "page_pretest" class="AWPage">
+	<style>
+		.stitle{ display:block;width:100%;background:#eee;height:30px;line-height:30px; }
+		.ltitle{ display:block;width:100%;background:#eee;font-size:14px;height:25px;line-height:25px; }
+	</style>
+    <div id="main_menu">
+		<ul class='menuul'>
+			<li><a href="javascript:changePage('menuHome')"><img src='image/2.png' />中间件</a></li>
+			<li><a href="javascript:changePage('home')" ><img src='image/3.png' />API</a></li>
+			<li><a class='fristli'><img src='image/4.png' />性能测试</a></li>
+			<li><a href="javascript:changePage('vip')" ><img src='image/5.png' />团队成员</a></li>
+		</ul>
+	</div>
+    <div id="mainct">
+    <div class='topld'><img class='tomenu' src='image/1.png' />性能测试&nbsp;&nbsp;</div>
+    <div id = "PT_page" style="margin-top:60px;">
+	    <b class='stitle'>&nbsp;&nbsp;&nbsp;测试方法</b>
+	    <p>&nbsp;&nbsp;从唯品会取测试数据，其中唯品会品牌页取10个数据，商品页每页10个数据。将AppAnyWay与唯品会进行性能比较，测试过程中每步记录内存使用情况。</p>
+	    <b class='stitle'>&nbsp;&nbsp;&nbsp;说明</b>
+	    <p>&nbsp;&nbsp;测试1~3 每次需要退出app，在继续进行下一测试。</p>
+	    <b class='ltitle'>&nbsp;&nbsp;&nbsp;&nbsp;测试1</b>
+	    <ol>
+	    	<li>进入app，获取唯品会品牌页</li>
+	    	<li>点击某品牌进入商品页</li>
+	    	<li>滑动3页</li>
+	    	<li>回退到品牌页</li>
+	    	<li>重复2~4步3次，每次选择不同品牌</li>
+	    </ol>
+	    <b class='ltitle'>&nbsp;&nbsp;&nbsp;&nbsp;测试2</b>
+	    <ol>
+	    	<li>进入app，获取唯品会品牌页</li>
+	    	<li>点击某品牌进入商品页</li>
+	    	<li>滑动3页</li>
+	    	<li>回退到品牌页</li>
+	    	<li>重复2~4步3次，每次相同品牌</li>
+	    </ol>
+	    <b class='ltitle'>&nbsp;&nbsp;&nbsp;&nbsp;测试3</b>
+	    <ol>
+	    	<li>进入app，获取唯品会品牌页</li>
+	    	<li>点击某品牌进入商品页</li>
+	    	<li>滑动5页</li>
+	    	<li>回退到品牌页</li>
+	    </ol>
+	    <b class='stitle'>&nbsp;&nbsp;&nbsp;测试结果</b>
+	    <ol>
+		    <li>
+		     	<p>Android测试结果</p> 
+		      	<div style="width:250px;padding-bottom:20px"><img src="image/android-appanyway1.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图1  Android测试1 AppAnyWay结果</p></div>
+		     	<div style="width:250px;padding-bottom:20px"><img src="image/android-vip1.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图2  Android测试1 唯品会结果</p></div>
+		      	<div style="width:250px;padding-bottom:20px"><img src="image/android-appanyway2.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图3  Android测试2 AppAnyWay结果</p></div>
+		      	<div style="width:250px;padding-bottom:20px"><img src="image/android-vip2.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图4  Android测试2 唯品会结果</p></div>
+		      	<div style="width:250px;padding-bottom:20px"><img src="image/android-appanyway3.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图5  Android测试3 AppAnyWay结果</p></div>
+		      	<div style="width:250px;padding-bottom:20px"><img src="image/android-vip3.jpg" width="250px" height="278px"></img><p style="text-align:center;font-size:10px">图6  Android测试3 唯品会结果</p></div>
+		     </li>
+		     <li>
+		     	<p>iOS测试结果</p>
+		     	<div style="width:250px;height:200px"><img src="image/iOS1.png" width="250px" height="150px"></img><p style="text-align:center;font-size:10px">图7  iOS测试1结果</p></div>
+		     	<div style="width:250px;height:200px"><img src="image/iOS2.png" width="250px" height="150px"></img><p style="text-align:center;font-size:10px">图8  iOS测试2结果</p></div>
+		     	<div style="width:250px;height:200px"><img src="image/iOS3.png" width="250px" height="150px"></img><p style="text-align:center;font-size:10px">图9  iOS测试3结果</p></div>
+		     </li>
+	    </ol>
+    </div>
+	</div>
+    <script>
+        var page_pretest = AW.createPageObj("pretest", {});
+    </script>
+</div>
+      
+  

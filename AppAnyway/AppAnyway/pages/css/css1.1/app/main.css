@@ -1,0 +1,30 @@
+body{
+	 margin: 0;
+	padding: 0;
+}
+
+.aw-content{
+	position:absolute;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+
+
+.aw{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	position:absolute;
+}
+
+#awpage0{
+	left:0%;
+}
+
+#awpage1{
+	left:100%;
+}

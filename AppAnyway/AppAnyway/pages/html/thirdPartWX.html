@@ -1,0 +1,160 @@
+<div id="page_thirdPartWX" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>WX&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	<div class='main_li'>
+		<h3>类名：AWThirdPartWX</h3>
+		<b>概述:</b>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;微信登录、分享到微信好友、微信朋友圈。</p>
+		<b>方法:</b>
+		<ul class='fnli'>
+			<li><h4 class='evefnh'>isInstalledWX</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;设备是否已安装微信。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) isInstalledWX:( NSDictionary *param )<br/>Android：<br/>public AWResult isInstalledWX (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+					<b>回调函数（Callback）：</b>
+					<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否已安装微信<br/>error：无</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWThirdPartWX", "isInstalledWX", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .isInstalledWX").html("已安装");<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .isInstalledWX").html("未安装");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .login").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试:</b>
+					<button class="btn isInstalledWX">是否安装微信</button>			
+					<span class="content">是否安装微信：<span class="isInstalledWX"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>login</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;微信登录。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) login:( NSDictionary *param )<br/>Android：<br/>public AWResult login (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;无</p>
+					<b>回调函数（Callback）：</b>
+					<p>result:<br/>&nbsp;&nbsp;类型：JSON字符串 <br/>&nbsp;&nbsp;描述：返回凭证accessToken，如：<br/>{"accessToken":<br/>"OezXcEiiBSKSxW0eoylIePascmMaEWDW86mASTNfTLcIeGuI5Au14WWwAe0Qlc0jhF2aU7rOH7b1NIGbio9bsqp_94mAwnNsKOqAY-UX5RM7g6YZozZGX91DOMu8eILrhpPZEHVlXN4YGyj1xF7Gmg"}<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：1901、1902、1903、1904、1905、0001</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWThirdPartWX", "login", {},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .login").html("accessToken: " + data.result.accessToken);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .login").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn login">微信登录</button>
+					<span class="content">登录：<span class="login"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>shareMsg</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;分享内容到微信。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) shareMsg:( NSDictionary *param )<br/>Android：<br/>public AWResult shareMsg (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>type:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：分享到微信好友或微信朋友圈，”wx”为微信好友，”wxfriend”为微信朋友圈。<br/>url:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：链接<br/>imageUrl:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：图片的URL<br/>title:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：标题<br/>description:<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：内容<br/></p>
+					<b>回调函数（Callback）：</b>
+					<p>result:<br/>&nbsp;&nbsp;类型：bool <br/>&nbsp;&nbsp;描述：返回是否分享成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：1901、1902、1903、1904、1905、0001</p>
+					<b>例子：</b>
+					<code><pre><br/>var param = {<br/>&nbsp;&nbsp;"type": "wxfriend",<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com",<br/>&nbsp;&nbsp;"imageUrl": "http://www.appanyway.com/anywayWeb/awdownload/test2.png",<br/>&nbsp;&nbsp;"title": "AppAnyWay",<br/>&nbsp;&nbsp;"description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>};<br/>AW.invoke("AWThirdPartWX", "shareMsg", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWxFriend").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWxFriend").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWxFriend").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});<br/>var param = {<br/>&nbsp;&nbsp;"type": "wx",<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com",<br/>&nbsp;&nbsp;"imageUrl": "http://www.appanyway.com/anywayWeb/awdownload/test2.png",<br/>&nbsp;&nbsp;"title": "AppAnyWay",<br/>&nbsp;&nbsp;"description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>};<br/>AW.invoke("AWThirdPartWX", "shareMsg", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWx").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWx").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_thirdPartWX .content .shareMsgWx").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn shareMsgWxFriend">分享到朋友圈</button>
+					<span class="content">分享到朋友圈：<span class="shareMsgWxFriend"></span></span>
+					<button class="btn shareMsgWx">分享给微信好友</button>   
+					<span class="content">分享给微信好友：<span class="shareMsgWx"></span></span>
+				</div>
+			</li>	
+		</ul>
+	</div>
+
+  <script>
+    var page_thirdPartWX = AW.createPageObj("thirdPartWX",{
+        init: function() {
+            $('.isInstalledWX').bind('click', AW_thirdPartWX.isInstalledWX);
+            $('.login').bind('click', AW_thirdPartWX.login);
+            $('.shareMsgWxFriend').bind('click', AW_thirdPartWX.shareMsgWxFriend);
+            $('.shareMsgWx').bind('click', AW_thirdPartWX.shareMsgWx);
+            $('.pageback').bind('click', AW_thirdPartWX.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        isInstalledWX: function() {
+            AW.invoke("AWThirdPartWX", "isInstalledWX", {},
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartWX .content .isInstalledWX").html("已安装");
+                    } else {
+                        $("#page_thirdPartWX .content .isInstalledWX").html("未安装");
+                    }
+                } else {
+                    $("#page_thirdPartWX .content .login").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        login: function() {
+            AW.invoke("AWThirdPartWX", "login", {},
+            function(data) {
+                if (data.success) {
+                    $("#page_thirdPartWX .content .login").html("accessToken: " + data.result.accessToken);
+                } else {
+                    $("#page_thirdPartWX .content .login").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        shareMsgWxFriend: function() {
+            var param = {
+                "type": "wxfriend",
+                "url": "http://www.appanyway.com",
+                "imageUrl": baseUrl + "/anywayWeb/awdownload/test2.png",
+                "title": "AppAnyWay",
+                "description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"
+            };
+            AW.invoke("AWThirdPartWX", "shareMsg", param,
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartWX .content .shareMsgWxFriend").html('成功');
+                    } else {
+                        $("#page_thirdPartWX .content .shareMsgWxFriend").html('成功');
+                    }
+                } else {
+                    $("#page_thirdPartWX .content .shareMsgWxFriend").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        shareMsgWx: function() {
+            var param = {
+                "type": "wx",
+                "url": "http://www.appanyway.com",
+                "imageUrl": baseUrl + "/anywayWeb/awdownload/test2.png",
+                "title": "AppAnyWay",
+                "description": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"
+            };
+            AW.invoke("AWThirdPartWX", "shareMsg", param,
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_thirdPartWX .content .shareMsgWx").html('成功');
+                    } else {
+                        $("#page_thirdPartWX .content .shareMsgWx").html('成功');
+                    }
+                } else {
+                    $("#page_thirdPartWX .content .shareMsgWx").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_thirdPartWX.addEvent('pageinit', AW_thirdPartWX.init)
+    					  .live('pagebeforeshow', AW_thirdPartWX.beforeshow)
+    					  .live('pageshow', AW_thirdPartWX.show);
+</script>
+</div>

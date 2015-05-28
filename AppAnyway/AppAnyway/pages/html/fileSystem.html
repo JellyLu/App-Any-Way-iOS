@@ -1,0 +1,549 @@
+<div id="page_fileSystem" class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>文件系统&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	<div class='main_li'>
+		<h3>类名：AWFileSystem</h3>
+		<b>概述:</b>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;保存、删除、读取缓存文件，获取缓存文件/文件夹大小,获取文件夹下某类文件名列表，iOS所有文件放在沙盒中Library/Caches下，通过folderName和fileName指定要处理的文件或者文件夹；Android所有文件放在文件数据区data/data/packageName(你的应用包名)/files下，通过folderName和fileName指定要处理的文件或者文件夹。</p>
+		<b>方法:</b>
+		<ul class='fnli'>
+		<li><h4 class='evefnh'>saveFile</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;所给内容保存到指定文件夹下的文件中。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void)saveFile:( NSDictionary *param )<br/>Android：<br/>public AWResult saveFile (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>content：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：需要保存的数据<br/>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹/子路<br/>fileName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件名</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否保存成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0406、0407</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "saveFile", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test1.doc",<br/>&nbsp;&nbsp;"content": "123"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveFile").html('保存成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveFile").html('保存失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveFile").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn saveFile">保存文件</button>
+					<span class="content">保存文件：<span class="saveFile"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>saveFileFromURL</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;下载内容保存到指定文件夹下的文件中。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void)saveFileFromURL:( NSDictionary *param )<br/>Android：<br/>public AWResult saveFileFromURL (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>url：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：下载数据的链接<br/>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹/子路<br/>fileName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件名</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否保存成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0406、0407、0408</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "saveFileFromURL", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test2.png",<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com/anywayWeb/awdownload/test2.png"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageFromURL").html('保存成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageFromURL").html('保存失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageFromURL").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn saveFileFromURL">下载文件</button>
+					<span class="content">从url获取文件保存到本地：<br/><span class="saveImageFromURL"></span><br/><span class="saveMediaFromURL"></span><br/><span class="saveVedioFromURL"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>saveImageToAlbum</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;将图片保存到相册中。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void)saveImageToAlbum:( NSDictionary *param )<br/>Android：<br/>public AWResult saveImageToAlbum (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>url：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：下载数据的链接</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否保存成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "saveImageToAlbum", {<br/>&nbsp;&nbsp;"url": "http://www.appanyway.com/anywayWeb/awdownload/test2.png"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageToAlbum").html('保存成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageToAlbum").html('保存失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .saveImageToAlbum").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn saveImageToAlbum">将图片保存到相册</button>
+					<span class="content">保存图片到相册：<span class="saveImageToAlbum"></span></span>
+				</div>
+			</li>	
+			<li><h4 class='evefnh'>fileSizeAtPath</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;路径下文件的大小。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) fileSizeAtPath:( NSDictionary *param )<br/>Android：<br/>public AWResult fileSizeAtPath (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>filePath：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件路径</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件大小（单位byte）,如1024<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "fileSizeAtPath", {<br/>&nbsp;&nbsp;"filePath": "cache/test3.mp3"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .fileSizeAtPath").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .fileSizeAtPath").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn fileSizeAtPath">文件大小</button>
+					<span class="content">文件大小：<span class="fileSizeAtPath"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>folderSizeAtPath</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;路径下文件夹的大小。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) folderSizeAtPath:( NSDictionary *param )<br/>Android：<br/>public AWResult folderSizeAtPath (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderPath：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹路径</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件大小（单位byte）,如33022<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "folderSizeAtPath", {<br/>&nbsp;&nbsp;"folderName": "cache"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .folderSizeAtPath").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .folderSizeAtPath").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn folderSizeAtPath">文件夹大小</button>
+					<span class="content">文件夹大小：<span class="folderSizeAtPath"></span></span>
+				</div>
+			</li>	
+			<li><h4 class='evefnh'>getFileList</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;获取路径下文件夹中某类型文件的文件名。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) getFileList:( NSDictionary *param )<br/>Android：<br/>public AWResult getFileList (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderPath：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹路径<br/>type：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件类型，如doc、txt、mp3、mp4等等，如果type为空字符串，则返回文件夹中所有文件的文件名。</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：数组<br/>&nbsp;&nbsp;描述：文件名列表<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "getFileList", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"type": ""<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;var html = "";<br/>&nbsp;&nbsp;&nbsp;&nbsp;for (var i = 0, len = data.result.length; i < len; ++i) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html += " " + data.result[i] + "\n";<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .getFileList").html(html);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .getFileList").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn getFileList">文件列表</button>
+					<span class="content">获取文件列表：<span class="getFileList"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>readFile</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;读取路径下文件，返回UTF8编码的字符串或者Base64位编码字符串。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) readFile:( NSDictionary *param )<br/>Android：<br/>Android: public AWResult readFile (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹/子路<br/>fileName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件名<br/>type：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件类型，分为image、media、other</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件内容，UTF8编码<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0404、0405、0403</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "readFile", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test1.doc",<br/>&nbsp;&nbsp;"type": "text"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .readFile").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .readFile").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn readFile">读取文件内容</button>
+					<span class="content">读取文件：<span class="readFile"></span><br/><span class='readImgsp'></span><img class="readImg" /></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>readFilePath</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;获取文件路径。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) readFilePath:( NSDictionary *param )<br/>Android：<br/>public AWResult readFilePath (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹/子路<br/>fileName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件名</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件当前路径<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0402</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "readFilePath", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test1.doc"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .readFilePath").html(data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .readFilePath").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn readFilePath">读取文件路径</button>
+					<span class="content">读取文件路径：<span class="readFilePath"></span><br/><span class='readFilePathImgsp'></span><br/><span class='readFilePathAudiosp'></span><br/><span class='readFilePathVideosp'></span><img class="readFilePathImg" /><audio class="readFilePathAudio" controls="controls"></audio><video class="readFilePathVideo" width="100" height="100" controls="controls"></video></span>
+				</div>
+			</li>	
+				<li><h4 class='evefnh'>uploadFile</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;将文件上传到服务器。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void)uploadFile:( NSDictionary *param )<br/>Android：<br/>public AWResult uploadFile (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>path：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件本地URI</p>
+					<b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：上传成功，则返回文件在服务器的url<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0404、0409、0410</p>
+					<b>例子：</b>
+					<code><pre>var path = $("page_fileSystem .content .readFilePathImg").attr("src");<br/>AW.invoke("AWFileSystem", "uploadFile", {<br/>&nbsp;&nbsp;"path": path<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .uploadFile").attr("src", data.result);<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .uploadFile").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn uploadFile">上传文件</button>     
+					<span class="content">上传文件：<span class="uploadFile"></span></span>
+				</div>
+			</li>	
+			<li><h4 class='evefnh'>deleteFile</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;删除指定文件夹下指定文件。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) deleteFile:( NSDictionary *param )<br/>Android：<br/>public AWResult deleteFile (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹名或子路径<br/>fileName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：要删除文件的名称</p>
+					<b>回调函数（Callback）：</b>
+					<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否成功删除文件<br/>error：<br/>&nbsp;&nbsp;类型：字符串 <br/>&nbsp;&nbsp;可能错误代码有：0003、0401</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "deleteFile", {<br/>&nbsp;&nbsp;"folderName": "cache",<br/>&nbsp;&nbsp;"fileName": "test1.doc"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFile").html('删除成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFile").html('删除失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFile").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试:</b>
+					<button class="btn deleteFile">删除文件</button>
+					<span class="content">删除文件：<span class="deleteFile"></span></span>
+				</div>
+			</li>
+			<li><h4 class='evefnh'>deleteFiles</h4>
+				<div class='licont'>
+					<b>功能：</b>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;删除指定文件夹下所有文件。</p>
+					<b>方法定义：</b>
+					<code><pre>iOS：<br/>-(void) deleteFiles:( NSDictionary *param )<br/>Android：<br/>public AWResult deleteFiles (String arguments)</pre></code>
+					<b>参数（Parameters）：</b>
+					<p>folderName：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：文件夹名或子路径</p>
+					<b>回调函数（Callback）：</b>
+					<p>result:<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否成功删除文件<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003、0401</p>
+					<b>例子：</b>
+					<code><pre>AW.invoke("AWFileSystem", "deleteFiles", {<br/>&nbsp;&nbsp;"folderName": "cache"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFiles").html('删除成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFiles").html('删除失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_fileSystem .content .deleteFiles").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+					<b>可用性:</b>
+					<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+					<b>测试：</b>
+					<button class="btn deleteFiles">删除文件夹</button>
+					<span class="content">删除文件夹：<span class="deleteFiles"></span></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+ <script>
+    var page_fileSystem = AW.createPageObj("fileSystem",{
+        init: function() {
+            $('.deleteFile').bind('click', AW_fileSystem.deleteFile);
+            $('.deleteFiles').bind('click', AW_fileSystem.deleteFiles);
+            $('.fileSizeAtPath').bind('click', AW_fileSystem.fileSizeAtPath);
+            $('.folderSizeAtPath').bind('click', AW_fileSystem.folderSizeAtPath);
+            $('.getFileList').bind('click', AW_fileSystem.getFileList);
+            $('.readFile').bind('click', AW_fileSystem.readFile);
+            $('.readFilePath').bind('click', AW_fileSystem.readFilePath);
+            $('.saveFile').bind('click', AW_fileSystem.saveFile);
+            $('.saveFileFromURL').bind('click', AW_fileSystem.saveFileFromURL);
+            $('.saveImageToAlbum').bind('click', AW_fileSystem.saveImageToAlbum);
+            $('.uploadFile').bind('click', AW_fileSystem.uploadFile);
+            $('.pageback').bind('click', AW_fileSystem.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        deleteFile: function() {
+            AW.invoke("AWFileSystem", "deleteFile", {
+                "folderName": "cache",
+                "fileName": "test1.doc"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .deleteFile").html('删除成功');
+                    } else {
+                        $("#page_fileSystem .content .deleteFile").html('删除失败');
+                    }
+                } else {
+                    $("#page_fileSystem .content .deleteFile").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        deleteFiles: function() {
+            AW.invoke("AWFileSystem", "deleteFiles", {
+                "folderName": "cache"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .deleteFiles").html('删除成功');
+                    } else {
+                        $("#page_fileSystem .content .deleteFiles").html('删除失败');
+                    }
+                } else {
+                    $("#page_fileSystem .content .deleteFiles").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        fileSizeAtPath: function() {
+            AW.invoke("AWFileSystem", "fileSizeAtPath", {
+                "filePath": "cache/test3.mp3"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .fileSizeAtPath").html(data.result);
+                } else {
+                    $("#page_fileSystem .content .fileSizeAtPath").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        folderSizeAtPath: function() {
+            AW.invoke("AWFileSystem", "folderSizeAtPath", {
+                "folderName": "cache"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .folderSizeAtPath").html(data.result);
+                } else {
+                    $("#page_fileSystem .content .folderSizeAtPath").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        getFileList: function() {
+            AW.invoke("AWFileSystem", "getFileList", {
+                "folderName": "cache",
+                "type": ""
+            },
+            function(data) {
+                if (data.success) {
+                    var html = "";
+                    for (var i = 0,
+                    len = data.result.length; i < len; ++i) {
+                        html += " " + data.result[i] + "\n";
+                    }
+                    $("#page_fileSystem .content .getFileList").html(html);
+                } else {
+                    $("#page_fileSystem .content .getFileList").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        readFile: function() {
+            AW.invoke("AWFileSystem", "readFile", {
+                "folderName": "cache",
+                "fileName": "test1.doc",
+                "type": "text"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readFile").html(data.result);
+             	 } else {
+                    $("#page_fileSystem .content .readFile").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFile", {
+                "folderName": "cache",
+                "fileName": "test2.png",
+                "type": "image"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readImg").attr("src", "data:image/png;base64," + data.result);
+                    $("#page_fileSystem .content .readImgsp").html('');
+                } else {
+                    $("#page_fileSystem .content .readImgsp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readImg").attr("src", "");
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFile", {
+                "folderName": "cache",
+                "fileName": "test3.mp3",
+                "type": "media"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readAudio").attr("src", "data:audio/mp3;base64," + data.result);
+                    $("#page_fileSystem .content .readAudiosp").html('');
+                } else {
+                    $("#page_fileSystem .content .readAudiosp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readAudio").attr("src", "");
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFile", {
+                "folderName": "cache",
+                "fileName": "test4.mp4",
+                "type": "media"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readVideo").attr("src", "data:video/mp4;base64," + data.result);
+                    $("#page_fileSystem .content .readVideosp").html('');
+                } else {
+                    $("#page_fileSystem .content .readVideosp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readVideo").attr("src", "");
+                }
+            });
+        },
+
+        readFilePath: function() {
+            AW.invoke("AWFileSystem", "readFilePath", {
+                "folderName": "cache",
+                "fileName": "test1.doc"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readFilePath").html(data.result);
+                } else {
+                    $("#page_fileSystem .content .readFilePath").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFilePath", {
+                "folderName": "cache",
+                "fileName": "test2.png"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readFilePathImg").attr("src", data.result);
+                    $("#page_fileSystem .content .readFilePathImgsp").html('');
+                } else {
+                    $("#page_fileSystem .content .readFilePathImgsp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readFilePathImg").attr("src","");
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFilePath", {
+                "folderName": "cache",
+                "fileName": "test3.mp3"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readFilePathAudio").attr("src", data.result);
+                    $("#page_fileSystem .content .readFilePathAudiosp").html('');
+                } else {
+                    $("#page_fileSystem .content .readFilePathAudiosp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readFilePathAudio").attr("src","");
+                }
+            });
+
+            AW.invoke("AWFileSystem", "readFilePath", {
+                "folderName": "cache",
+                "fileName": "test4.mp4"
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .readFilePathVideo").attr("src", data.result);
+                    $("#page_fileSystem .content .readFilePathVideosp").html('');
+                } else {
+                    $("#page_fileSystem .content .readFilePathVideosp").html(data.error.code + ":" + data.error.desc);
+                    $("#page_fileSystem .content .readFilePathVideo").attr("src","");
+                }
+            });
+        },
+
+        saveFile: function() {
+            AW.invoke("AWFileSystem", "saveFile", {
+                "folderName": "cache",
+                "fileName": "test1.doc",
+                "content": "123"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .saveFile").html('保存成功');
+                    } else {
+                        $("#page_fileSystem .content .saveFile").html('保存失败');
+                    }
+                } else {
+                    $("#page_fileSystem .content .saveFile").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+        },
+
+        saveFileFromURL: function() {
+            AW.invoke("AWFileSystem", "saveFileFromURL", {
+                "folderName": "cache",
+                "fileName": "test2.png",
+                "url": baseUrl+"/anywayWeb/awdownload/test2.png"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .saveImageFromURL").html('图片保存成功 ');
+						
+                    } else {
+                        $("#page_fileSystem .content .saveImageFromURL").html('图片保存失败 ');
+                    }
+                } else {
+                    $("#page_fileSystem .content .saveImageFromURL").html("图片" + data.error.code + ":" + data.error.desc + " ");
+                }
+            });
+
+            AW.invoke("AWFileSystem", "saveFileFromURL", {
+                "folderName": "cache",
+                "fileName": "test3.mp3",
+                "url": baseUrl+"/anywayWeb/awdownload/test3.mp3"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .saveMediaFromURL").html('音频保存成功 ');
+                    } else {
+                        $("#page_fileSystem .content .saveMediaFromURL").html('音频保存失败 ');
+                    }
+                } else {
+                    $("#page_fileSystem .content .saveMediaFromURL").html("音频" + data.error.code + ":" + data.error.desc + " ");
+                }
+            });
+            
+            AW.invoke("AWFileSystem", "saveFileFromURL", {
+                "folderName": "cache",
+                "fileName": "test4.mp4",
+                "url": baseUrl+"/anywayWeb/awdownload/test4.mp4"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .saveVedioFromURL").html('视频保存成功 ');
+                    } else {
+                        $("#page_fileSystem .content .saveVedioFromURL").html('视频保存失败 ');
+                    }
+                } else {
+                    $("#page_fileSystem .content .saveVedioFromURL").html("视频" + data.error.code + ":" + data.error.desc + " ");
+                }
+            });
+        },
+
+        saveImageToAlbum: function() {
+            AW.invoke("AWFileSystem", "saveImageToAlbum", {
+                "url": baseUrl+"/anywayWeb/awdownload/test2.png"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_fileSystem .content .saveImageToAlbum").html('保存成功');
+                    } else {
+                        $("#page_fileSystem .content .saveImageToAlbum").html('保存失败');
+                    }
+                } else {
+                    $("#page_fileSystem .content .saveImageToAlbum").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+        uploadFile: function() {
+            var path = $("#page_fileSystem .content .readFilePathImg").attr("src");
+            AW.invoke("AWFileSystem", "uploadFile", {
+                "path": path
+            },
+            function(data) {
+                if (data.success) {
+                    $("#page_fileSystem .content .uploadFile").html( data.result);
+                } else {
+                    $("#page_fileSystem .content .uploadFile").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_fileSystem.addEvent('pageinit', AW_fileSystem.init)
+    page_fileSystem.addEvent('pagebeforeshow', AW_fileSystem.beforeshow)
+    page_fileSystem.addEvent('pageshow', AW_fileSystem.show);
+</script>
+</div>

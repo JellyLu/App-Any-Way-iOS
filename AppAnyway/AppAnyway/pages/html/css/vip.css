@@ -1,0 +1,17 @@
+.vipic{
+	width:100%;
+	height:1370px;
+	padding-top:43px;
+}
+.vipic img{
+	margin:0px;
+	padding:0px;
+	display:block;
+	float:left;
+}
+.vipic div{	float:left; }
+.vipic .indiv{ width:100%; }
+.vipic .topl{ width:55%; }
+.vipic .topr{ width:45%; }
+.vipic .sencd{ width:50%; }
+.vipic .thrrd{ width:100%; }

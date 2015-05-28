@@ -1,0 +1,69 @@
+<div id="page_message"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+		<div class='sontopld'><a class='backf pageback'><</a>短信&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>
+			<h3>类名：AWMessage</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;短信。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>shareMsg</h4>
+					<div class='licont'>
+						<b>功能：</b>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;发送短信。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) shareMsg:( NSDictionary *param )<br/>Android：<br/>public AWResult shareMsg (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>content：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;描述：短信内容</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：短信分享是否成功<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/> &nbsp;&nbsp;可能错误代码有1101、1102、1103</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWMessage", "shareMsg", {<br/>&nbsp;&nbsp;"content": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。"<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_message .content .shareMsg").html('分享成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_message .content .shareMsg").html('分享失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_message .content .shareMsg").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn shareMsg">短信分享</button>
+						<span class="content">短信分享：<span class="shareMsg"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	 
+ <script>
+    var page_message = AW.createPageObj("message",{
+        init: function() {
+            $('.shareMsg').bind('click', AW_message.shareMsg);
+            $('.pageback').bind('click', AW_message.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        shareMsg: function() {
+            AW.invoke("AWMessage", "shareMsg", {
+                "content": "AppAnyWay是由绵阳恒达信息科技有限公司和Web智能技术实验室联合研发的手机应用开发中间件，是一款基于Android、iOS原生+Html5混合开发中间件，开发者无需掌握复杂的移动开发技术，只需具备Html(5)开发能力，即可快速开发出一款移动App。http://www.appanyway.com"
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_message .content .shareMsg").html('分享成功');
+                    } else {
+                        $("#page_message .content .shareMsg").html('分享失败');
+                    }
+                } else {
+                    $("#page_message .content .shareMsg").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+
+        }
+    });
+
+    page_message.addEvent('pageinit', AW_message.init)
+    page_message.addEvent('pagebeforeshow', AW_message.beforeshow)
+    page_message.addEvent('pageshow', AW_message.show);
+</script>
+</div>
+

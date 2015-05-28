@@ -1,0 +1,18 @@
+#Grid{
+	width:100%;
+	padding-top:50px;
+	background:#fff;
+	text-align:center;
+	font-size:14px;
+}
+#Grid td{ height:70px; }
+#Grid td a{
+	display:block;
+	margin:5px;
+	padding:10px 0px;
+	border:1px solid #aaa;
+	border-radius:8px;
+	text-decoration:none;
+}
+#Grid a img{ width:30px; height:30px; }
+#Grid a span{ display:block; color:#333; }

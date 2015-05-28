@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>722960EC-1D9D-4AF4-B8E2-BAEE4192BAB6</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7a75b324-21f4-0c4f-ae74-5b8d7916d7ab++8519</key>
+		<string>https://192.168.1.100/svn/AppAnyWay/code/beta1.0/Android/AnyWay/assets/APIhtml</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7a75b324-21f4-0c4f-ae74-5b8d7916d7ab++8519</key>
+		<string>html/</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>7a75b324-21f4-0c4f-ae74-5b8d7916d7ab++8519</key>
+		<string>https://192.168.1.100/svn/AppAnyWay</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://192.168.1.100/svn/AppAnyWay/code/beta1.0/Android/AnyWay/assets/APIhtml</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7a75b324-21f4-0c4f-ae74-5b8d7916d7ab++8519</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7a75b324-21f4-0c4f-ae74-5b8d7916d7ab++8519</string>
+			<key>IDESourceControlWCCName</key>
+			<string>html</string>
+		</dict>
+	</array>
+</dict>
+</plist>

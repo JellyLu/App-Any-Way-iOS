@@ -1,0 +1,89 @@
+<div id="page_shake"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+	<div class='sontopld'><a class='backf pageback'><</a>摇一摇&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class='main_li'>		
+			<h3>类名：AWShake</h3>
+			<b>概述:</b>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;开启和关闭摇一摇，当开启摇一摇时，检测到设备正在摇动震动。</p>
+			<b>方法:</b>
+			<ul class='fnli'>
+				<li><h4 class='evefnh'>shake</h4>
+				    <div class='licont'>
+				    <b>功能：</b>
+				    <p>&nbsp;&nbsp;&nbsp;&nbsp;开启或关闭摇一摇。</p>
+						<b>方法定义：</b>
+						<code><pre>iOS：<br/>-(void) shake:( NSDictionary *param )<br/>Android：<br/>public AWResult shake (String arguments)</pre></code>
+						<b>参数（Parameters）：</b>
+						<p>isShake：<br/>&nbsp;&nbsp;类型： bool<br/>&nbsp;&nbsp;描述：是否开启摇一摇，true为开启，false为关闭。</p>
+						<b>回调函数（Callback）：</b>
+						<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否正在摇<br/>error：无</p>
+						<b>例子：</b>
+						<code><pre>AW.invoke("AWShake", "setShake", {<br/>&nbsp;&nbsp;"isShake": true<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOn").html("成功");<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOn").html("失败");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOn").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});<br/>AW.invoke("AWShake", "setShake", {<br/>&nbsp;&nbsp;"isShake": false<br/>},<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOff").html("成功");<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOff").html("失败");<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_shake .content .setShakeOff").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>					
+						<b>可用性:</b>
+						<p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0 及以上可用</p>
+						<b>测试：</b>
+						<button class="btn setShakeOn">摇一摇</button>
+						<span class="content">On：<span class="setShakeOn"></span></span>
+						<button class="btn setShakeOff">摇一摇</button>
+						<span class="content">Off：<span class="setShakeOff"></span></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+   
+ <script>
+    var page_shake = AW.createPageObj("shake",{
+        init: function() {
+            $('.setShakeOn').bind('click', AW_shake.setShakeOn);
+            $('.setShakeOff').bind('click', AW_shake.setShakeOff);
+            $('.pageback').bind('click', AW_shake.pageback);
+        },
+        beforeshow: function() {
+        },
+        show: function() {
+        },
+        pageback: function() {
+            AW.pageBack();
+        },
+        setShakeOn: function() {
+            AW.invoke("AWShake", "setShake", {
+                "isShake": true
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_shake .content .setShakeOn").html("成功");
+                    } else {
+                        $("#page_shake .content .setShakeOn").html("失败");
+                    }
+                } else {
+                    $("#page_shake .content .setShakeOn").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        },
+
+        setShakeOff: function() {
+            AW.invoke("AWShake", "setShake", {
+                "isShake": false
+            },
+            function(data) {
+                if (data.success) {
+                    if (data.result) {
+                        $("#page_shake .content .setShakeOff").html("成功");
+                    } else {
+                        $("#page_shake .content .setShakeOff").html("失败");
+                    }
+                } else {
+                    $("#page_shake .content .setShakeOff").html(data.error.code + ":" + data.error.desc);
+                }
+            });
+        }
+    });
+
+    page_shake.addEvent('pageinit', AW_shake.init)
+    page_shake.addEvent('pagebeforeshow', AW_shake.beforeshow)
+    page_shake.addEvent('pageshow', AW_shake.show);
+</script>
+</div>
+
+

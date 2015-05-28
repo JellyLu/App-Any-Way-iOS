@@ -1,0 +1,74 @@
+<div id="page_baiduNavigation"  class="AWPage">
+	<link rel="stylesheet" href="css/page.css" type="text/css">
+    <div class='sontopld'><a class='backf pageback'><</a>百度导航&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div class='main_li'>
+        <h3>类名：AWBaiduNavigation</h3>
+        <b>概述:</b>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;百度导航。</p>
+        <b>方法:</b>
+        <ul class='fnli'>
+            <li><h4 class='evefnh'>startNavigation</h4>
+                <div class='licont'>
+                    <b>功能：</b>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;开始导航。</p>
+                    <b>方法定义：</b>
+                    <code><pre>iOS：<br/>-(void) startNavigation:( NSDictionary *param )<br/>Android：<br/>public AWResult startNavigation (String arguments)</pre></code>
+                    <b>参数（Parameters）：</b>
+					<p>startX：<br/>&nbsp;&nbsp;类型：double<br/>&nbsp;&nbsp;描述： 起点坐标经度<br/>startY：<br/>&nbsp;&nbsp;类型：double<br/>&nbsp;&nbsp;描述：起点左边纬度<br/>sType：<br/>&nbsp;&nbsp;类型：int<br/>&nbsp;&nbsp;描述：起点坐标类型，0为原始的经纬度坐标，1为从百度地图中获取的左边。<br/>endX：<br/>&nbsp;&nbsp;类型：double<br/>&nbsp;&nbsp;描述： 终点坐标经度<br/>endY：<br/>&nbsp;&nbsp;类型：double<br/>&nbsp;&nbsp;描述：终点左边纬度<br/>eType：<br/>&nbsp;&nbsp;类型：int<br/>&nbsp;&nbsp;描述：终点坐标类型，0为原始的经纬度坐标，1为从百度地图中获取的左边。</p>
+                    <b>回调函数（Callback）：</b>
+					<p>result：<br/>&nbsp;&nbsp;类型：bool<br/>&nbsp;&nbsp;描述：是否成功进行导航<br/>error：<br/>&nbsp;&nbsp;类型：字符串<br/>&nbsp;&nbsp;可能错误代码有：0003、1501、1502、1503、0006、1504、1505、1506<br/></p>
+                    <b>例子：</b>
+                    <code><pre>var param = {<br/>&nbsp;&nbsp;"startX": "116.307854",<br/>&nbsp;&nbsp;"startY": "40.055878",<br/>&nbsp;&nbsp;"sType": "0",<br/>&nbsp;&nbsp;"endX": "116.403875",<br/>&nbsp;&nbsp;"endY": "39.915168",<br/>&nbsp;&nbsp;"eType": "0"<br/>};<br/>AW.invoke("AWBaiduNavigation", "startNavigation", param,<br/>function(data) {<br/>&nbsp;&nbsp;if (data.success) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (data.result) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_baiduNavigation .content .navigation").html('成功');<br/>&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#page_baiduNavigation .content .navigation").html('失败');<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;} else {<br/>&nbsp;&nbsp;&nbsp;&nbsp;$("#page_baiduNavigation .content .navigation").html(data.error.code + ":" + data.error.desc);<br/>&nbsp;&nbsp;}<br/>});</pre></code>
+                    <b>可用性:</b>
+                    <p>iOS：iOS 6.0 及以上可用<br/>Android：Android 4.0及以上可用，注：在Android 5.0.0及以上不可用</p>
+                    <b>测试：</b>
+                    <button class="btn navigation">百度导航</button>
+                    <span class="info">导航：<span class="navigation"></span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+	 <script>
+	    var page_baiduNavigation = AW.createPageObj("baiduNavigation",{
+	        init: function() {
+	            $('.navigation').bind('click', AW_baiduNavigation.navigation);
+	            $('.pageback').bind('click', AW_baiduNavigation.pageback);
+	        },
+	        beforeshow: function() {
+	        },
+	        show: function() {
+	        },
+	        pageback: function() {
+	            AW.pageBack();
+	        },
+	        navigation: function() {
+	            var param = {
+	                "startX": "116.307854",
+	                "startY": "40.055878",
+	                "sType": "0",
+	                "endX": "116.403875",
+	                "endY": "39.915168",
+	                "eType": "0"
+	            };
+	            AW.invoke("AWBaiduNavigation", "startNavigation", param,
+	            function(data) {
+	                if (data.success) {
+	                    if (data.result) {
+	                        $("#page_baiduNavigation .info .navigation").html('成功');
+	                    } else {
+	                        $("#page_baiduNavigation .info .navigation").html('失败');
+	                    }
+	                } else {
+	                    $("#page_baiduNavigation .info .navigation").html(data.error.code + ":" + data.error.desc);
+	                }
+	            });
+	        }
+	    });
+	
+	    page_baiduNavigation.addEvent('pageinit', AW_baiduNavigation.init)
+	    page_baiduNavigation.addEvent('pagebeforeshow', AW_baiduNavigation.beforeshow)
+	    page_baiduNavigation.addEvent('pageshow', AW_baiduNavigation.show);
+	</script>
+</div>
+

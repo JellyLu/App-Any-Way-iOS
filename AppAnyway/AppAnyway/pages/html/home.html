@@ -1,0 +1,64 @@
+<div id = "page_home" class="AWPage">
+	<link rel="stylesheet" href="css/AnyWay.css" type="text/css">
+	<div id="main_menu">
+		<ul class='menuul'>
+			<li><a href="javascript:changePage('menuHome')"><img src='image/2.png' />中间件</a></li>
+			<li><a class='fristli' ><img src='image/3.png' />API</a></li>
+			<li><a href="javascript:changePage('pretest')" ><img src='image/4.png' />性能测试</a></li>
+			<li><a href="javascript:changePage('vip')" ><img src='image/5.png' />团队成员</a></li>
+		</ul>
+	</div>
+	<div id="mainct">
+		<div class='topld'><img class='tomenu' src='image/1.png' />API&nbsp;&nbsp;</div>
+		<table id = "Grid">
+		 <tr>
+				<td><a href="javascript:AW.changePage('appInfo')"><img src='image/li1.png' ></img><span>APP信息</span></a></td>
+				<td><a href="javascript:AW.changePage('deviceInfo')"><img src='image/li2.png' ></img><span>设备信息</span></a></td>
+				<td><a href="javascript:AW.changePage('fileSystem')"><img src='image/li3.png' ></img><span>文件系统</span></a></td>
+				<td><a href="javascript:AW.changePage('localResource')"><img src='image/li4.png' ></img><span>常用功能</span></a></td>
+			</tr>
+			<tr>
+				<td><a href="javascript:AW.changePage('manage')"><img src='image/li5.png' ></img><span>页面管理</span></a></td>
+				<td><a href="javascript:AW.changePage('audioRecorder')"><img src='image/li6.png' ></img><span>音频</span></a></td>
+				<td><a href="javascript:AW.changePage('beep')"><img src='image/li7.png' ></img><span>蜂鸣</span></a></td>
+				<td><a href="javascript:AW.changePage('linkMan')"><img src='image/li8.png' ></img><span>联系人</span></a></td>
+			</tr>
+			<tr>
+				<td><a href="javascript:AW.changePage('location')"><img src='image/li9.png' ></img><span>定位</span></a></td>
+				<td><a href="javascript:AW.changePage('message')"><img src='image/li10.png' ></img><span>短信</span></a></td>
+				<td><a href="javascript:AW.changePage('netWork')"><img src='image/li11.png' ></img><span>网络</span></a></td>
+				<td><a href="javascript:AW.changePage('photo')"><img src='image/li12.png' ></img><span>照片</span></a></td>
+			</tr>
+			<tr>
+				<td><a href="javascript:AW.changePage('scan')"><img src='image/li13.png' ></img><span>扫一扫</span></a></td>
+				<td><a href="javascript:AW.changePage('shake')"><img src='image/li14.png' ></img><span>摇一摇</span></a></td>
+				<td><a href="javascript:AW.changePage('video')"><img src='image/li15.png' ></img><span>视频</span></a></td>
+				<td><a href="javascript:AW.changePage('vibrate')"><img src='image/li16.png' ></img><span>震动</span></a></td>
+			</tr>
+			<tr>
+				<td><a href="javascript:AW.changePage('alipay')"><img src='image/li17.png' ></img><span>支付宝</span></a></td>
+				<td><a href="javascript:AW.changePage('baiduNavigation')"><img src='image/li18.png' ></img><span>百度导航</span></a></td>
+				<td><a href="javascript:AW.changePage('thirdPartQQ')"><img src='image/li19.png' ></img><span>QQ</span></a></td>
+				<td><a href="javascript:AW.changePage('thirdPartSina')"><img src='image/li20.png' ></img><span>Sina</span></a></td>
+			</tr>
+			<tr>
+				<td><a href="javascript:AW.changePage('thirdPartTencentWB')"><img src='image/li21.png' ></img><span>腾讯微博</span></a></td>
+				<td><a href="javascript:AW.changePage('thirdPartWX')"><img src='image/li22.png' ></img><span>WX</span></a></td>
+			</tr> 
+	  </table>
+  </div>
+  <script>
+  	var page_home = AW.createPageObj("home", {
+		init:function(){
+		},
+		beforeshow:function(){},
+		show:function(){},     
+		pageback:function() {
+			AW.pageBack();
+	    }
+	 });
+	 page_home.addEvent('pageinit', AW_home.init);
+	 page_home.addEvent('pagebeforeshow', AW_home.beforeshow);
+	 page_home.addEvent('pageshow', AW_home.show);		   
+  </script>
+</div>

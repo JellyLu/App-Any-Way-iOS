@@ -1,0 +1,17 @@
+#main-cont{
+	background:#fff;
+}
+.vipcont{ padding:40px 15px; color:#333; }
+.vipcont p{ word-break:break-all; padding-right:10px; }
+.vipcont p a{ text-decoration:none; }
+.vipcont img{
+	width:98%;
+	margin:10px 10px 10px 3px;
+}
+.vipcont p img{
+	width:50%;
+	max-width:475;
+	max-height:635;
+	margin:10px;
+	float:right;
+}

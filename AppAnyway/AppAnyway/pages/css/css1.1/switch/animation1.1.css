@@ -1,0 +1,162 @@
+/* animation sets */
+/* move from / to  */
+.aw-moveToLeft {
+	animation: moveToLeft 0.9s ease both;
+	-webkit-animation: moveToLeft 0.9s ease both;
+	-moz-animation: moveToLeft 0.9s ease both;
+}
+
+.aw-moveFromLeft {
+	-webkit-animation: moveFromLeft 0.9s ease both;
+	-moz-animation: moveFromLeft 0.9s ease both;
+	animation: moveFromLeft 0.9s ease both;
+}
+
+.aw-moveToRight {
+	-webkit-animation: moveToRight 0.9s ease both;
+	-moz-animation: moveToRight 0.9s ease both;
+	animation: moveToRight 0.9s ease both;
+}
+
+.aw-moveFromRight {	
+	animation: moveFromRight 0.9s;
+	-webkit-animation: moveFromRight 0.9s;
+	-moz-animation: moveFromRight 0.9s;	
+}
+
+/*****move from /to and fade***/
+
+.aw-moveToLeftFade{
+	-webkit-animation: moveToLeftFade 0.9s ease both;
+	-moz-animation:moveToLeftFade 0.9s ease both;
+	animation:moveToleftFade 0.9s ease both;
+}
+
+.aw-moveFromLeftFade{
+	-webkit-animation:moveFromLeftFade 0.9s ease both;
+	-moz-animation:moveFromLeftFade 0.9s ease both;
+	animation:moveFromLeftFade 0.9s ease both;
+}
+
+.aw-moveToRightFade{
+	-webkit-animation:moveToRightFade 0.9s ease both;
+	-moz-animation:moveToRightFade 0.9s ease both;
+	animation:moveToRightFade 0.9s ease both;
+}
+
+.aw-moveFromRightFade{
+	-webkit-animation:moveFromRightFade 0.9s ease both;
+	-moz-animation:moveFromRightFade 0.9s ease both;
+	animation:moveFromRightFade 0.9s ease both;
+}
+
+/********************************* keyframes **************************************/
+
+/* move from / to  */
+
+@-webkit-keyframes moveToLeft {
+	from {left:0;}
+	to {left:-100%; }
+}
+@-moz-keyframes moveToLeft {
+	from {left:0;}
+	to {left:-100%; }
+}
+@keyframes moveToLeft {
+	from {left:0; }
+	to {left:-100%; }
+}
+
+@-webkit-keyframes moveFromLeft {
+	from {left:-100%; }
+	to {left:0; }
+}
+@-moz-keyframes moveFromLeft {
+	from {left:-100%; }
+	to {left:0; }
+}
+@keyframes moveFromLeft {
+	from {left:-100%; }
+	to {left:0; }
+}
+
+@-webkit-keyframes moveToRight { 
+	from {left:0; }
+	to {left:100%; }
+}
+@-moz-keyframes moveToRight { 
+	from {left:0; }
+	to { left:100%; }
+}
+@keyframes moveToRight { 
+	from {left:0; }
+	to { left:100%; }
+}
+
+@-webkit-keyframes moveFromRight {
+	from {left:100%; }
+	to {left:0; }
+}
+@-moz-keyframes moveFromRight {
+	from {left:100%; }
+	to {left:0; }
+}
+@keyframes moveFromRight {
+	from {left:100%; }
+	to {left:0; }
+}
+
+
+/** move from / to and fade **/
+@-webkit-keyframes moveToLeftFade{
+	from { opacity: 1.0; }
+	to {   opacity: 0.3; }
+}
+@-moz-keyframes moveToLeftFade{
+	from { opacity: 1.0; }
+	to {   opacity: 0.3; }
+}
+@keyframes moveToLeftFade{
+	from { opacity: 1.0; }
+	to {   opacity: 0.3; }
+}
+
+
+@-webkit-keyframes moveFromLeftFade{
+	from { opacity: 0.3;}
+	to { opacity: 1.0;}
+}
+@-moz-keyframes moveFromLeftFade{
+	from { opacity: 0.3;}
+	to { opacity: 1.0;}
+}
+@keyframes moveFromLeftFade{
+	from { opacity: 0.3;}
+	to { opacity: 1.0;}
+}
+
+@-webkit-keyframes moveToRightFade{
+	from {opacity: 1.0;}
+	tp{opacity: 0.3;}
+}
+@-moz-keyframes moveToRightFade{
+	from {opacity: 1.0;}
+	tp{opacity: 0.3;}
+}
+@keyframes moveToRightFade{
+	from {opacity: 1.0;}
+	tp{opacity: 0.3;}
+}
+
+@-webkit-keyframes moveFromRightFade {
+	from {opacity:0.3;}
+	to {opacity:1.0; }
+}
+@-moz-keyframes moveFromRightFade {
+	from {opacity:0.3;}
+	to {opacity:1.0; }
+}
+@keyframes moveFromRightFade {
+	from {opacity:0.3;}
+	to {opacity:1.0;}
+}
